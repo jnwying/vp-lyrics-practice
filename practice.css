@@ -1237,3 +1237,168 @@ body > .modal .modal-dialog {
     }
 
 }
+/* =========================================================
+   SONG DROPDOWN — SONG MANAGEMENT
+   ========================================================= */
+
+/* Hide the old dropdown styling from the sticky header */
+.top-sticky .song-card {
+    display: none;
+}
+
+
+/* Current song section inside Song Management */
+
+.management-song {
+    margin-bottom: 14px;
+}
+
+.management-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    margin-bottom: 8px;
+}
+
+
+/* Song selector */
+
+.management-song .song-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+}
+
+
+/* Dropdown button */
+
+.management-song .song-button {
+    width: 100%;
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: var(--panel2);
+    color: var(--text);
+
+    padding: 0 12px;
+
+    text-align: left;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+
+/* Dropdown menu */
+
+.management-song .song-menu {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: calc(100% + 5px);
+
+    z-index: 200000;
+
+    display: none;
+
+    max-height: 220px;
+    overflow-y: auto;
+
+    background: #1b1c1f;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 5px;
+
+    box-shadow: 0 16px 35px rgba(0,0,0,.55);
+}
+
+
+/* JS adds .open when dropdown is opened */
+
+.management-song .song-menu.open {
+    display: block;
+}
+
+
+/* Song choices */
+
+.management-song .song-option {
+    width: 100%;
+    min-height: 44px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #c7c9cd;
+
+    text-align: left;
+
+    padding: 0 11px;
+}
+
+.management-song .song-option.selected {
+    background: #303134;
+    color: white;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MANAGEMENT MODAL LAYERING
+   ========================================================= */
+
+#managementModal {
+    z-index: 99999 !important;
+}
+
+#managementModal .management-dialog {
+    position: relative;
+    z-index: 100000 !important;
+    overflow: visible;
+}
+
+
+/* Make sure the song dropdown can extend outside its section */
+
+#managementModal .management-song {
+    position: relative;
+    z-index: 100001;
+}
+
+#managementModal .song-menu {
+    z-index: 100002 !important;
+}
+
+
+/* =========================================================
+   MOBILE MANAGEMENT MODAL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #managementModal .management-dialog {
+        max-height: 88vh;
+        overflow-y: auto;
+    }
+
+    .management-song .song-button {
+        min-height: 54px;
+        font-size: 17px;
+    }
+
+}
