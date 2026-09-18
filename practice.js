@@ -729,6 +729,15 @@ function renderEditSections() {
   );
 }
 
+function openImportLyrics() {
+  $("managementModal").classList.add("hidden");
+  $("lyricsInput").value = "";
+  $("importModal").classList.remove("hidden");
+  setTimeout(() => {
+    $("lyricsInput").focus();
+  }, 50);
+}
+
 function openEditSong() {
   $("managementModal").classList.add("hidden");
 
@@ -904,6 +913,9 @@ function init() {
   $("editSongButton").onclick =
     openEditSong;
 
+  $("importSongButton").onclick =
+    openImportLyrics;
+
   $("deleteSongButton").onclick =
     deleteSong;
 
@@ -929,6 +941,15 @@ function init() {
 
   $("cancelEdit").onclick = () =>
     $("editModal").classList.add("hidden");
+
+  $("closeImport").onclick = () =>
+    $("importModal").classList.add("hidden");
+
+  $("cancelImport").onclick = () =>
+    $("importModal").classList.add("hidden");
+
+  $("confirmImport").onclick =
+    importLyrics;
 
   $("saveEdit").onclick =
     saveEditSong;
@@ -1000,3 +1021,54 @@ document.addEventListener(
   "DOMContentLoaded",
   init
 );
+
+
+// ADD TO HOME SCREEN PROMPT
+function isStandaloneApp() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+function closeInstallPrompt() {
+  const prompt = $("installPrompt");
+  if (!prompt) return;
+
+  prompt.classList.remove("show");
+  prompt.setAttribute("aria-hidden", "true");
+  localStorage.setItem("vpLyricsInstallPromptDismissed", "true");
+}
+
+function checkInstallPrompt() {
+  const prompt = $("installPrompt");
+  if (!prompt || isStandaloneApp()) return;
+
+  const dismissed =
+    localStorage.getItem("vpLyricsInstallPromptDismissed");
+
+  if (dismissed === "true") return;
+
+  setTimeout(() => {
+    if (isStandaloneApp()) return;
+    prompt.classList.add("show");
+    prompt.setAttribute("aria-hidden", "false");
+  }, 900);
+}
+
+// Register the service worker so the site behaves as a proper PWA.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const close = $("installPromptClose");
+  const gotIt = $("installPromptGotIt");
+
+  if (close) close.onclick = closeInstallPrompt;
+  if (gotIt) gotIt.onclick = closeInstallPrompt;
+
+  checkInstallPrompt();
+});
