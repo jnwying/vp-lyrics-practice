@@ -787,3 +787,71 @@ input[type="range"] {
     position: relative;
     z-index: 1;
 }
+
+/* =====================================================
+   SONG MANAGEMENT — ALWAYS ABOVE STICKY HEADER
+   ===================================================== */
+
+#songManagementModal,
+.song-management-modal,
+.modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    z-index: 99999 !important;
+
+    isolation: isolate;
+}
+
+/* The dark background behind the modal */
+#songManagementModal {
+    background: rgba(0, 0, 0, 0.72);
+}
+
+/* Modal panel */
+#songManagementModal .modal,
+#songManagementModal .modal-content,
+#songManagementModal .song-management,
+.song-management-modal .modal,
+.song-management-modal .modal-content {
+    position: relative;
+    z-index: 100000 !important;
+}
+
+
+/* =====================================================
+   STICKY HEADER
+   ===================================================== */
+
+.top-sticky {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    background: #0c0d0f;
+
+    isolation: auto;
+}
+
+
+/* =====================================================
+   SONG DROPDOWN
+   ===================================================== */
+
+.song-menu {
+    position: absolute;
+
+    z-index: 5000 !important;
+}
+
+
+/* =====================================================
+   MODAL CLOSE BUTTON
+   ===================================================== */
+
+#songManagementModal button,
+.song-management-modal button {
+    position: relative;
+    z-index: 100001;
+}
