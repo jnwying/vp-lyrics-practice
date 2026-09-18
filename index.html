@@ -1,363 +1,1022 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0c0d0f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="practice.css">
-  <title>VP Lyrics Practice</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0c0d0f"
+    >
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <meta
+        name="apple-mobile-web-app-title"
+        content="VP Practice"
+    >
+
+    <title>VP Lyrics Practice</title>
+
+    <link
+        rel="manifest"
+        href="./manifest.json"
+    >
+
+    <link
+        rel="stylesheet"
+        href="./practice.css"
+    >
 </head>
+
+
 <body>
- <!-- STICKY TOP AREA -->
-<div class="top-sticky">
 
-    <header class="app-header">
 
-        <!-- LEFT: APP TITLE -->
-        <div class="app-brand">
-            <div class="app-kicker">VP</div>
-            <h1>LYRICS PRACTICE</h1>
+    <!-- =====================================================
+         STICKY TOP AREA
+    ====================================================== -->
+
+    <div class="top-sticky">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="app-header">
+
+            <div class="app-brand">
+
+                <div class="app-kicker">
+                    V P
+                </div>
+
+                <h1>
+                    LYRICS PRACTICE
+                </h1>
+
+            </div>
+
+
+            <div class="header-controls">
+
+                <button
+                    id="settingsButton"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Settings"
+                    title="Song Management"
+                    onclick="openManagement()"
+                >
+                    ⚙
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PRACTICE PREVIEW
+        ================================================== -->
+
+        <div class="practice-sticky">
+
+
+            <section class="preview-card">
+
+                <div class="preview-label">
+                    PRACTICE PREVIEW
+                </div>
+
+
+                <div
+                    id="lyric"
+                    class="lyric-output fade-out"
+                ></div>
+
+
+                <div
+                    id="currentCode"
+                    class="current-code"
+                >
+                    V1A
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ON / OFF
+            ================================================== -->
+
+            <section class="output-card">
+
+                <button
+                    id="outputOnButton"
+                    class="output-button"
+                    type="button"
+                    onclick="turnOn()"
+                >
+                    ● ON
+                </button>
+
+
+                <button
+                    id="outputOffButton"
+                    class="output-button active off"
+                    type="button"
+                    onclick="turnOff()"
+                >
+                    ● OFF
+                </button>
+
+            </section>
+
         </div>
 
-        <!-- RIGHT: SONG DROPDOWN + SETTINGS -->
-        <div class="header-controls">
+    </div>
 
-        
+
+
+    <!-- =====================================================
+         MAIN SCROLLING CONTENT
+    ====================================================== -->
+
+    <main class="app">
+
+
+        <section class="slides-card">
+
+
+            <div class="section-title">
+                SLIDES
+            </div>
+
+
+            <!--
+                JavaScript creates all sections and
+                slide buttons here.
+            -->
+
+            <div id="sections"></div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SONG MANAGEMENT MODAL
+    ====================================================== -->
+
+    <div
+        id="managementModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-dialog management-dialog">
+
+
+            <!-- HEADER -->
+
+            <div class="modal-header">
+
+                <strong>
+                    SONG MANAGEMENT
+                </strong>
+
+
+                <button
+                    id="closeManagement"
+                    class="close-button"
+                    type="button"
+                    onclick="closeManagement()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CURRENT SONG
+            ================================================== -->
+
+            <div class="management-song">
+
+                <div class="management-label">
+                    CURRENT SONG
+                </div>
+
+
+                <section class="song-card">
+
+                    <button
+                        id="songButton"
+                        class="song-button"
+                        type="button"
+                    >
+
+                        <span id="songName">
+                            The Blood
+                        </span>
+
+                        <span class="dropdown-arrow">
+                            ⌄
+                        </span>
+
+                    </button>
+
+
+                    <div
+                        id="songMenu"
+                        class="song-menu"
+                    ></div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SONG ACTIONS
+            ================================================== -->
 
             <button
-                id="manageButton"
-                class="icon-button"
+                id="addSongButton"
+                class="management-action"
                 type="button"
-                aria-label="Song management"
             >
-                ⚙
+                ＋ ADD SONG
+            </button>
+
+
+            <button
+                id="editSongButton"
+                class="management-action"
+                type="button"
+            >
+                ✎ EDIT SONG
+            </button>
+
+
+            <button
+                id="importSongButton"
+                class="management-action"
+                type="button"
+            >
+                ⇩ IMPORT LYRICS
+            </button>
+
+
+            <button
+                id="deleteSongButton"
+                class="management-action danger"
+                type="button"
+            >
+                ✕ DELETE SONG
+            </button>
+
+
+            <button
+                id="saveLibraryButton"
+                class="management-action"
+                type="button"
+            >
+                ▣ SAVE LIBRARY
+            </button>
+
+
+            <button
+                id="resetButton"
+                class="management-action danger"
+                type="button"
+            >
+                ↻ RESET LIBRARY
+            </button>
+
+
+
+            <!-- =================================================
+                 DIVIDER
+            ================================================== -->
+
+            <div class="divider"></div>
+
+
+
+            <!-- =================================================
+                 TRANSITION SETTINGS
+            ================================================== -->
+
+            <div class="management-heading">
+                TRANSITION SETTINGS
+            </div>
+
+
+            <label
+                class="setting-label"
+                for="transitionTimeRange"
+            >
+                Transition Timing
+            </label>
+
+
+            <div class="timing-row">
+
+                <input
+                    id="transitionTimeRange"
+                    type="range"
+                    min="0"
+                    max="500"
+                    step="10"
+                    value="300"
+                >
+
+
+                <span id="transitionTimeValue">
+                    0.30 sec
+                </span>
+
+            </div>
+
+
+            <div class="range-labels">
+
+                <span>
+                    0.00
+                </span>
+
+                <span>
+                    0.50 sec
+                </span>
+
+            </div>
+
+
+
+            <!-- MANUAL TIMING -->
+
+            <div class="manual-row">
+
+                <label
+                    for="transitionTimeManual"
+                >
+                    Manual Timing
+                </label>
+
+
+                <input
+                    id="transitionTimeManual"
+                    type="number"
+                    min="0"
+                    max="5"
+                    step="0.01"
+                    value="0.30"
+                >
+
+
+                <span>
+                    sec
+                </span>
+
+            </div>
+
+
+
+            <!-- CLOSE -->
+
+            <button
+                id="closeManagementBottom"
+                class="close-management-button"
+                type="button"
+                onclick="closeManagement()"
+            >
+                CLOSE
             </button>
 
         </div>
 
-    </header>
+    </div>
 
 
-    <!-- PRACTICE PREVIEW -->
-    <div class="practice-sticky">
 
-        <section class="preview-card">
+    <!-- =====================================================
+         EDIT MODAL
+    ====================================================== -->
 
-            <div class="preview-label">
-                PRACTICE PREVIEW
+    <div
+        id="editModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-dialog edit-dialog">
+
+
+            <div class="modal-header">
+
+                <strong>
+                    EDIT SONG
+                </strong>
+
+
+                <button
+                    class="close-button"
+                    type="button"
+                    onclick="closeEditModal()"
+                >
+                    ×
+                </button>
+
             </div>
 
+
+            <label
+                class="modal-label"
+                for="songTitle"
+            >
+                SONG TITLE
+            </label>
+
+
+            <input
+                id="songTitle"
+                class="modal-input"
+                type="text"
+                autocomplete="off"
+            >
+
+
             <div
-                id="lyric"
-                class="lyric-output"
+                id="sectionEditor"
+                class="edit-sections"
             ></div>
 
-            <div
-                id="currentCode"
-                class="current-code"
-            >
-                V1A
+
+            <div class="modal-buttons">
+
+                <button
+                    class="secondary-button"
+                    type="button"
+                    onclick="closeEditModal()"
+                >
+                    CANCEL
+                </button>
+
+
+                <button
+                    class="primary-button"
+                    type="button"
+                    onclick="saveSong()"
+                >
+                    SAVE SONG
+                </button>
+
             </div>
 
-        </section>
+        </div>
+
+    </div>
 
 
-        <!-- ON / OFF -->
-        <section class="output-card">
+
+    <!-- =====================================================
+         IMPORT MODAL
+    ====================================================== -->
+
+    <div
+        id="importModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-dialog large">
+
+
+            <div class="modal-header">
+
+                <strong>
+                    IMPORT LYRICS
+                </strong>
+
+
+                <button
+                    class="close-button"
+                    type="button"
+                    onclick="closeImportModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <label
+                class="modal-label"
+                for="lyricsInput"
+            >
+                PASTE LYRICS
+            </label>
+
+
+            <textarea
+                id="lyricsInput"
+                class="lyrics-input"
+                placeholder="Paste your lyrics here..."
+            ></textarea>
+
+
+            <div class="helper">
+
+                Put section headings on their own line.
+
+                <br><br>
+
+                Example:
+
+                <br>
+
+                Verse 1
+
+                <br>
+
+                Chorus
+
+                <br>
+
+                Bridge 1
+
+            </div>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    class="secondary-button"
+                    type="button"
+                    onclick="closeImportModal()"
+                >
+                    CANCEL
+                </button>
+
+
+                <button
+                    class="primary-button"
+                    type="button"
+                    onclick="importLyrics()"
+                >
+                    IMPORT
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ADD TO HOME SCREEN PROMPT
+    ====================================================== -->
+
+    <div
+        id="installPrompt"
+        class="install-prompt"
+    >
+
+        <div class="install-prompt-box">
 
             <button
-                id="onButton"
-                class="output-button on active"
+                class="install-prompt-close"
                 type="button"
+                onclick="closeInstallPrompt()"
+                aria-label="Close"
             >
-                ● ON
+                ×
             </button>
+
+
+            <div class="install-prompt-icon">
+                📱
+            </div>
+
+
+            <h2>
+                ADD TO HOME SCREEN
+            </h2>
+
+
+            <p>
+                Add VP Lyrics Practice to your
+                iPhone Home Screen for quick access.
+            </p>
+
+
+            <div class="install-steps">
+
+                <div>
+
+                    <strong>
+                        1
+                    </strong>
+
+                    <span>
+                        Tap the
+                        <b>Share ↑</b>
+                        button in Safari.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        2
+                    </strong>
+
+                    <span>
+                        Tap
+                        <b>Add to Home Screen</b>.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        3
+                    </strong>
+
+                    <span>
+                        Turn on
+                        <b>Open as Web App</b>.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        4
+                    </strong>
+
+                    <span>
+                        Tap
+                        <b>Add</b>.
+                    </span>
+
+                </div>
+
+            </div>
+
 
             <button
-                id="offButton"
-                class="output-button off"
+                class="install-prompt-button"
                 type="button"
+                onclick="closeInstallPrompt()"
             >
-                ● OFF
+                GOT IT
             </button>
 
-        </section>
-
-    </div>
-
-</div>
-
-
-<!-- MAIN SCROLLING CONTENT -->
-<main class="app">
-
-    <!-- SLIDES -->
-    <section class="slides-card">
-        <div class="section-title">SLIDES</div>
-        <div id="sections"></div>
-    </section>
-
-</main>
-
-
-<!-- SONG MANAGEMENT -->
-<div id="managementModal" class="modal hidden">
-    <div class="modal-dialog management-dialog">
-      <div class="modal-header">
-<!-- SONG MANAGEMENT -->
-<div id="managementModal" class="modal hidden">
-
-  <div class="modal-dialog management-dialog">
-
-    <!-- HEADER -->
-    <div class="modal-header">
-      <strong>SONG MANAGEMENT</strong>
-
-      <button
-        id="closeManagement"
-        class="close-button"
-        type="button"
-      >×</button>
-    </div>
-
-
-    <!-- CURRENT SONG -->
-    <div class="management-song">
-
-      <div class="management-label">
-        CURRENT SONG
-      </div>
-
-      <section class="song-card">
-
-        <button
-          id="songButton"
-          class="song-button"
-          type="button"
-        >
-          <span id="songName">The Blood</span>
-          <span class="dropdown-arrow">⌄</span>
-        </button>
-
-        <div id="songMenu" class="song-menu"></div>
-
-      </section>
+        </div>
 
     </div>
 
 
-    <!-- SONG ACTIONS -->
 
-    <button
-      id="addSongButton"
-      class="management-action"
-      type="button"
-    >
-      ＋ ADD SONG
-    </button>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-    <button
-      id="editSongButton"
-      class="management-action"
-      type="button"
-    >
-      ✎ EDIT SONG
-    </button>
-
-    <button
-      id="importSongButton"
-      class="management-action"
-      type="button"
-    >
-      ⇩ IMPORT LYRICS
-    </button>
-
-    <button
-      id="deleteSongButton"
-      class="management-action danger"
-      type="button"
-    >
-      ♜ DELETE SONG
-    </button>
-
-    <button
-      id="saveLibraryButton"
-      class="management-action"
-      type="button"
-    >
-      ▣ SAVE LIBRARY
-    </button>
-
-    <button
-      id="resetButton"
-      class="management-action danger"
-      type="button"
-    >
-      ↻ RESET LIBRARY
-    </button>
+    <script src="./practice.js"></script>
 
 
-    <!-- TRANSITION SETTINGS -->
+    <!-- =====================================================
+         SMALL HTML HELPERS
+         These only control the modal UI.
+    ====================================================== -->
 
-    <div class="divider"></div>
+    <script>
 
-    <div class="management-heading">
-      TRANSITION SETTINGS
-    </div>
+        /* -----------------------------------------------
+           MANAGEMENT MODAL
+        ------------------------------------------------ */
 
-    <label
-      class="setting-label"
-      for="timingRange"
-    >
-      Transition Timing
-    </label>
+        function openManagement() {
 
-    <div class="timing-row">
+            const modal =
+                document.getElementById(
+                    "managementModal"
+                );
 
-      <input
-        id="timingRange"
-        type="range"
-        min="0"
-        max="500"
-        step="10"
-        value="300"
-      >
+            if (!modal) return;
 
-      <span id="timingValue">
-        0.30 sec
-      </span>
+            modal.classList.remove("hidden");
 
-    </div>
+            document.body.style.overflow = "hidden";
 
-    <div class="range-labels">
-      <span>0.00</span>
-      <span>0.50 sec</span>
-    </div>
+        }
 
 
-    <!-- MANUAL TIMING -->
+        function closeManagement() {
 
-    <div class="manual-row">
+            const modal =
+                document.getElementById(
+                    "managementModal"
+                );
 
-      <label for="timingManual">
-        Manual Timing
-      </label>
+            if (!modal) return;
 
-      <input
-        id="timingManual"
-        type="number"
-        min="0"
-        max="5"
-        step="0.01"
-        value="0.30"
-      >
+            modal.classList.add("hidden");
 
-      <span>sec</span>
+            document.body.style.overflow = "";
 
-    </div>
+        }
 
 
-    <!-- CLOSE -->
 
-    <button
-      id="closeManagementBottom"
-      class="close-management-button"
-      type="button"
-    >
-      CLOSE
-    </button>
+        /* -----------------------------------------------
+           SONG DROPDOWN
+        ------------------------------------------------ */
 
-  </div>
+        const songButton =
+            document.getElementById(
+                "songButton"
+            );
 
-</div>
-
-  <!-- ADD SONG -->
-  <div id="addSongModal" class="modal hidden">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <strong>ADD SONG</strong>
-        <button id="closeAddSong" class="close-button" type="button">×</button>
-      </div>
-
-      <label class="modal-label" for="newSongTitle">SONG TITLE</label>
-      <input id="newSongTitle" class="modal-input" type="text" placeholder="Song title" autocomplete="off">
-
-      <div class="modal-buttons">
-        <button id="cancelAddSong" class="secondary-button" type="button">CANCEL</button>
-        <button id="confirmAddSong" class="primary-button" type="button">ADD SONG</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- EDIT SONG -->
-  <div id="editModal" class="modal hidden">
-    <div class="modal-dialog edit-dialog">
-      <div class="modal-header">
-        <strong>EDIT SONG</strong>
-        <button id="closeEdit" class="close-button" type="button">×</button>
-      </div>
-
-      <label class="modal-label" for="editSongTitle">SONG TITLE</label>
-      <input id="editSongTitle" class="modal-input" type="text" autocomplete="off">
-
-      <div id="editSections" class="edit-sections"></div>
-
-      <button id="addEditSection" class="management-action" type="button">＋ ADD SECTION</button>
-
-      <div class="modal-buttons">
-        <button id="cancelEdit" class="secondary-button" type="button">CANCEL</button>
-        <button id="saveEdit" class="primary-button" type="button">SAVE CHANGES</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- IMPORT -->
-  <div id="importModal" class="modal hidden">
-    <div class="modal-dialog large">
-      <div class="modal-header">
-        <strong>IMPORT LYRICS</strong>
-        <button id="closeImport" class="close-button" type="button">×</button>
-      </div>
-
-      <p class="helper">
-        Use headings such as Verse 1, Chorus, Bridge 1, Pre-Chorus, Intro, Outro or Tag on their own line.
-      </p>
-
-      <textarea id="lyricsInput" class="lyrics-input" placeholder="Verse 1
-Everything changed...
-The person I was...
-
-Chorus
-Hallelujah..."></textarea>
-
-      <div class="modal-buttons">
-        <button id="cancelImport" class="secondary-button" type="button">CANCEL</button>
-        <button id="confirmImport" class="primary-button" type="button">IMPORT</button>
-      </div>
-    </div>
-  </div>
+        const songMenu =
+            document.getElementById(
+                "songMenu"
+            );
 
 
-  <!-- ADD TO HOME SCREEN -->
-  <div id="installPrompt" class="install-prompt" aria-hidden="true">
-    <div class="install-prompt-box" role="dialog" aria-modal="true" aria-labelledby="installPromptTitle">
-      <button id="installPromptClose" class="install-prompt-close" type="button" aria-label="Close">×</button>
-      <div class="install-prompt-icon">📱</div>
-      <h2 id="installPromptTitle">ADD TO HOME SCREEN</h2>
-      <p>Add VP Lyrics Practice to your Home Screen for quick access.</p>
-      <div class="install-steps">
-        <div><strong>1</strong><span>Tap the <b>Share</b> button ↑</span></div>
-        <div><strong>2</strong><span>Tap <b>Add to Home Screen</b></span></div>
-        <div><strong>3</strong><span>Turn on <b>Open as Web App</b></span></div>
-        <div><strong>4</strong><span>Tap <b>Add</b></span></div>
-      </div>
-      <button id="installPromptGotIt" class="install-prompt-button" type="button">GOT IT</button>
-    </div>
-  </div>
+        if (songButton && songMenu) {
 
-  <script src="practice.js"></script>
+            songButton.addEventListener(
+                "click",
+                function(event) {
+
+                    event.stopPropagation();
+
+                    songMenu.classList.toggle(
+                        "open"
+                    );
+
+                }
+            );
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    songMenu &&
+                    songButton &&
+                    !songMenu.contains(event.target) &&
+                    !songButton.contains(event.target)
+                ) {
+
+                    songMenu.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* -----------------------------------------------
+           TRANSITION RANGE
+        ------------------------------------------------ */
+
+        const transitionRange =
+            document.getElementById(
+                "transitionTimeRange"
+            );
+
+
+        if (transitionRange) {
+
+            transitionRange.addEventListener(
+                "input",
+                function() {
+
+                    if (
+                        typeof saveTransitionSetting ===
+                        "function"
+                    ) {
+
+                        saveTransitionSetting(
+                            this.value
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* -----------------------------------------------
+           MANUAL TRANSITION
+        ------------------------------------------------ */
+
+        const manualTransition =
+            document.getElementById(
+                "transitionTimeManual"
+            );
+
+
+        if (manualTransition) {
+
+            manualTransition.addEventListener(
+                "change",
+                function() {
+
+                    if (
+                        typeof saveManualTransitionSetting ===
+                        "function"
+                    ) {
+
+                        saveManualTransitionSetting(
+                            this.value
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* -----------------------------------------------
+           EDIT MODAL
+        ------------------------------------------------ */
+
+        function closeEditModal() {
+
+            const modal =
+                document.getElementById(
+                    "editModal"
+                );
+
+            if (!modal) return;
+
+            modal.classList.add("hidden");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+
+        /* -----------------------------------------------
+           IMPORT MODAL
+        ------------------------------------------------ */
+
+        function closeImportModal() {
+
+            const modal =
+                document.getElementById(
+                    "importModal"
+                );
+
+            if (!modal) return;
+
+            modal.classList.add("hidden");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+
+        /* -----------------------------------------------
+           INSTALL PROMPT
+        ------------------------------------------------ */
+
+        function closeInstallPrompt() {
+
+            const prompt =
+                document.getElementById(
+                    "installPrompt"
+                );
+
+            if (!prompt) return;
+
+            prompt.classList.remove("show");
+
+            localStorage.setItem(
+                "vpLyricsInstallPromptDismissed",
+                "true"
+            );
+
+        }
+
+
+
+        /* -----------------------------------------------
+           CLOSE MODALS WITH ESC
+        ------------------------------------------------ */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key !== "Escape") {
+                    return;
+                }
+
+                closeManagement();
+                closeEditModal();
+                closeImportModal();
+
+            }
+        );
+
+
+
+        /* -----------------------------------------------
+           INITIAL INSTALL PROMPT
+        ------------------------------------------------ */
+
+        function isStandalone() {
+
+            return (
+                window.matchMedia(
+                    "(display-mode: standalone)"
+                ).matches ||
+                window.navigator.standalone === true
+            );
+
+        }
+
+
+        if (
+            !isStandalone() &&
+            !localStorage.getItem(
+                "vpLyricsInstallPromptDismissed"
+            )
+        ) {
+
+            setTimeout(
+                function() {
+
+                    const prompt =
+                        document.getElementById(
+                            "installPrompt"
+                        );
+
+                    if (prompt) {
+
+                        prompt.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                },
+                1000
+            );
+
+        }
+
+    </script>
+
 </body>
+
 </html>
