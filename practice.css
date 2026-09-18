@@ -722,3 +722,68 @@ input[type="range"] {
   font-size: 12px;
   font-weight: 800;
 }
+
+/* =========================================
+   STICKY TOP AREA
+   ========================================= */
+
+.top-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: #0c0d0f;
+
+    border-bottom: 1px solid #24272b;
+
+    /* Keeps the sticky area above the scrolling slides */
+    isolation: isolate;
+}
+
+
+/* Header */
+
+.top-sticky .app-header {
+    position: relative;
+    z-index: 1001;
+}
+
+
+/* Song dropdown */
+
+.top-sticky .song-card {
+    position: relative;
+    z-index: 1002;
+}
+
+
+/* Preview + ON/OFF */
+
+.top-sticky .practice-sticky {
+    position: relative;
+    z-index: 1003;
+}
+
+
+/* Make sure the song menu appears above everything */
+
+.song-menu {
+    z-index: 2000;
+}
+
+
+/* =========================================
+   REMOVE OLD STICKY BEHAVIOUR
+   ========================================= */
+
+.practice-sticky {
+    position: relative;
+}
+
+
+/* Slides should scroll normally */
+
+.slides-card {
+    position: relative;
+    z-index: 1;
+}
