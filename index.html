@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
@@ -9,94 +8,50 @@
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
-    <meta
-        name="theme-color"
-        content="#0c0d0f"
-    >
-
-    <meta
-        name="apple-mobile-web-app-capable"
-        content="yes"
-    >
-
-    <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-    >
-
-    <meta
-        name="apple-mobile-web-app-title"
-        content="VP Practice"
-    >
+    <meta name="theme-color" content="#0c0d0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="VP Practice">
 
     <title>VP Lyrics Practice</title>
 
-    <link
-        rel="manifest"
-        href="./manifest.json"
-    >
-
-    <link
-        rel="stylesheet"
-        href="./practice.css"
-    >
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="./practice.css">
 </head>
-
 
 <body>
 
-
     <!-- =====================================================
-         STICKY TOP AREA
+         STICKY TOP
     ====================================================== -->
 
     <div class="top-sticky">
 
-
-        <!-- =================================================
-             HEADER
-        ================================================== -->
-
         <header class="app-header">
 
             <div class="app-brand">
-
-                <div class="app-kicker">
-                    V P
-                </div>
-
-                <h1>
-                    LYRICS PRACTICE
-                </h1>
-
+                <div class="app-kicker">V P</div>
+                <h1>LYRICS PRACTICE</h1>
             </div>
 
-
-            <div class="header-controls">
-
-                <button
-                    id="settingsButton"
-                    class="icon-button"
-                    type="button"
-                    aria-label="Settings"
-                    title="Song Management"
-                    onclick="openManagement()"
-                >
-                    ⚙
-                </button>
-
-            </div>
+            <!-- IMPORTANT:
+                 practice.js expects this exact ID: manageButton -->
+            <button
+                id="manageButton"
+                class="icon-button"
+                type="button"
+                aria-label="Song Management"
+                title="Song Management"
+            >⚙</button>
 
         </header>
 
 
-
-        <!-- =================================================
-             PRACTICE PREVIEW
-        ================================================== -->
-
         <div class="practice-sticky">
 
+            <!-- =================================================
+                 PREVIEW
+            ================================================== -->
 
             <section class="preview-card">
 
@@ -104,45 +59,40 @@
                     PRACTICE PREVIEW
                 </div>
 
-
                 <div
                     id="lyric"
                     class="lyric-output fade-out"
                 ></div>
 
-
                 <div
                     id="currentCode"
                     class="current-code"
-                >
-                    V1A
-                </div>
+                ></div>
 
             </section>
 
 
-
             <!-- =================================================
                  ON / OFF
+
+                 IMPORTANT:
+                 practice.js expects onButton and offButton.
             ================================================== -->
 
             <section class="output-card">
 
                 <button
-                    id="outputOnButton"
+                    id="onButton"
                     class="output-button"
                     type="button"
-                    onclick="turnOn()"
                 >
                     ● ON
                 </button>
 
-
                 <button
-                    id="outputOffButton"
+                    id="offButton"
                     class="output-button active off"
                     type="button"
-                    onclick="turnOff()"
                 >
                     ● OFF
                 </button>
@@ -154,39 +104,28 @@
     </div>
 
 
-
     <!-- =====================================================
-         MAIN SCROLLING CONTENT
+         SCROLLING SLIDES
     ====================================================== -->
 
     <main class="app">
 
-
         <section class="slides-card">
-
 
             <div class="section-title">
                 SLIDES
             </div>
 
-
-            <!--
-                JavaScript creates all sections and
-                slide buttons here.
-            -->
-
+            <!-- practice.js renders the sections here -->
             <div id="sections"></div>
 
-
         </section>
-
 
     </main>
 
 
-
     <!-- =====================================================
-         SONG MANAGEMENT MODAL
+         SONG MANAGEMENT
     ====================================================== -->
 
     <div
@@ -196,21 +135,16 @@
 
         <div class="modal-dialog management-dialog">
 
-
-            <!-- HEADER -->
-
             <div class="modal-header">
 
                 <strong>
                     SONG MANAGEMENT
                 </strong>
 
-
                 <button
                     id="closeManagement"
                     class="close-button"
                     type="button"
-                    onclick="closeManagement()"
                 >
                     ×
                 </button>
@@ -218,17 +152,13 @@
             </div>
 
 
-
-            <!-- =================================================
-                 CURRENT SONG
-            ================================================== -->
+            <!-- CURRENT SONG -->
 
             <div class="management-song">
 
                 <div class="management-label">
                     CURRENT SONG
                 </div>
-
 
                 <section class="song-card">
 
@@ -237,7 +167,6 @@
                         class="song-button"
                         type="button"
                     >
-
                         <span id="songName">
                             The Blood
                         </span>
@@ -245,9 +174,7 @@
                         <span class="dropdown-arrow">
                             ⌄
                         </span>
-
                     </button>
-
 
                     <div
                         id="songMenu"
@@ -259,10 +186,7 @@
             </div>
 
 
-
-            <!-- =================================================
-                 SONG ACTIONS
-            ================================================== -->
+            <!-- SONG ACTIONS -->
 
             <button
                 id="addSongButton"
@@ -272,7 +196,6 @@
                 ＋ ADD SONG
             </button>
 
-
             <button
                 id="editSongButton"
                 class="management-action"
@@ -280,7 +203,6 @@
             >
                 ✎ EDIT SONG
             </button>
-
 
             <button
                 id="importSongButton"
@@ -290,7 +212,6 @@
                 ⇩ IMPORT LYRICS
             </button>
 
-
             <button
                 id="deleteSongButton"
                 class="management-action danger"
@@ -299,7 +220,6 @@
                 ✕ DELETE SONG
             </button>
 
-
             <button
                 id="saveLibraryButton"
                 class="management-action"
@@ -307,7 +227,6 @@
             >
                 ▣ SAVE LIBRARY
             </button>
-
 
             <button
                 id="resetButton"
@@ -318,36 +237,28 @@
             </button>
 
 
-
-            <!-- =================================================
-                 DIVIDER
-            ================================================== -->
-
             <div class="divider"></div>
 
 
-
-            <!-- =================================================
-                 TRANSITION SETTINGS
-            ================================================== -->
+            <!-- TRANSITION SETTINGS -->
 
             <div class="management-heading">
                 TRANSITION SETTINGS
             </div>
 
-
             <label
                 class="setting-label"
-                for="transitionTimeRange"
+                for="timingRange"
             >
                 Transition Timing
             </label>
 
-
             <div class="timing-row">
 
+                <!-- IMPORTANT:
+                     practice.js expects timingRange -->
                 <input
-                    id="transitionTimeRange"
+                    id="timingRange"
                     type="range"
                     min="0"
                     max="500"
@@ -355,41 +266,28 @@
                     value="300"
                 >
 
-
-                <span id="transitionTimeValue">
+                <span id="timingValue">
                     0.30 sec
                 </span>
 
             </div>
 
-
             <div class="range-labels">
-
-                <span>
-                    0.00
-                </span>
-
-                <span>
-                    0.50 sec
-                </span>
-
+                <span>0.00</span>
+                <span>0.50 sec</span>
             </div>
 
 
-
-            <!-- MANUAL TIMING -->
-
             <div class="manual-row">
 
-                <label
-                    for="transitionTimeManual"
-                >
+                <label for="timingManual">
                     Manual Timing
                 </label>
 
-
+                <!-- IMPORTANT:
+                     practice.js expects timingManual -->
                 <input
-                    id="transitionTimeManual"
+                    id="timingManual"
                     type="number"
                     min="0"
                     max="5"
@@ -397,22 +295,15 @@
                     value="0.30"
                 >
 
-
-                <span>
-                    sec
-                </span>
+                <span>sec</span>
 
             </div>
 
-
-
-            <!-- CLOSE -->
 
             <button
                 id="closeManagementBottom"
                 class="close-management-button"
                 type="button"
-                onclick="closeManagement()"
             >
                 CLOSE
             </button>
@@ -422,30 +313,29 @@
     </div>
 
 
-
     <!-- =====================================================
-         EDIT MODAL
+         ADD SONG MODAL
+
+         IDs MUST match practice.js.
     ====================================================== -->
 
     <div
-        id="editModal"
+        id="addSongModal"
         class="modal hidden"
     >
 
-        <div class="modal-dialog edit-dialog">
-
+        <div class="modal-dialog">
 
             <div class="modal-header">
 
                 <strong>
-                    EDIT SONG
+                    ADD SONG
                 </strong>
 
-
                 <button
+                    id="closeAddSong"
                     class="close-button"
                     type="button"
-                    onclick="closeEditModal()"
                 >
                     ×
                 </button>
@@ -455,14 +345,84 @@
 
             <label
                 class="modal-label"
-                for="songTitle"
+                for="newSongTitle"
             >
                 SONG TITLE
             </label>
 
+            <input
+                id="newSongTitle"
+                class="modal-input"
+                type="text"
+                placeholder="Enter song title"
+                autocomplete="off"
+            >
+
+
+            <div class="modal-buttons">
+
+                <button
+                    id="cancelAddSong"
+                    class="secondary-button"
+                    type="button"
+                >
+                    CANCEL
+                </button>
+
+                <button
+                    id="confirmAddSong"
+                    class="primary-button"
+                    type="button"
+                >
+                    ADD SONG
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         EDIT SONG MODAL
+
+         IDs MUST match practice.js.
+    ====================================================== -->
+
+    <div
+        id="editModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-dialog edit-dialog">
+
+            <div class="modal-header">
+
+                <strong>
+                    EDIT SONG
+                </strong>
+
+                <button
+                    id="closeEdit"
+                    class="close-button"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <label
+                class="modal-label"
+                for="editSongTitle"
+            >
+                SONG TITLE
+            </label>
 
             <input
-                id="songTitle"
+                id="editSongTitle"
                 class="modal-input"
                 type="text"
                 autocomplete="off"
@@ -470,26 +430,34 @@
 
 
             <div
-                id="sectionEditor"
+                id="editSections"
                 class="edit-sections"
             ></div>
+
+
+            <button
+                id="addEditSection"
+                class="edit-add-section"
+                type="button"
+            >
+                ＋ ADD SECTION
+            </button>
 
 
             <div class="modal-buttons">
 
                 <button
+                    id="cancelEdit"
                     class="secondary-button"
                     type="button"
-                    onclick="closeEditModal()"
                 >
                     CANCEL
                 </button>
 
-
                 <button
+                    id="saveEdit"
                     class="primary-button"
                     type="button"
-                    onclick="saveSong()"
                 >
                     SAVE SONG
                 </button>
@@ -501,9 +469,10 @@
     </div>
 
 
-
     <!-- =====================================================
-         IMPORT MODAL
+         IMPORT LYRICS MODAL
+
+         IDs MUST match practice.js.
     ====================================================== -->
 
     <div
@@ -513,18 +482,16 @@
 
         <div class="modal-dialog large">
 
-
             <div class="modal-header">
 
                 <strong>
                     IMPORT LYRICS
                 </strong>
 
-
                 <button
+                    id="closeImport"
                     class="close-button"
                     type="button"
-                    onclick="closeImportModal()"
                 >
                     ×
                 </button>
@@ -558,14 +525,17 @@
                 <br>
 
                 Verse 1
-
                 <br>
+                lyric line...
+                <br>
+                lyric line...
+                <br><br>
 
                 Chorus
-
                 <br>
-
-                Bridge 1
+                lyric line...
+                <br>
+                lyric line...
 
             </div>
 
@@ -573,18 +543,17 @@
             <div class="modal-buttons">
 
                 <button
+                    id="cancelImport"
                     class="secondary-button"
                     type="button"
-                    onclick="closeImportModal()"
                 >
                     CANCEL
                 </button>
 
-
                 <button
+                    id="confirmImport"
                     class="primary-button"
                     type="button"
-                    onclick="importLyrics()"
                 >
                     IMPORT
                 </button>
@@ -596,7 +565,6 @@
     </div>
 
 
-
     <!-- =====================================================
          ADD TO HOME SCREEN PROMPT
     ====================================================== -->
@@ -604,14 +572,15 @@
     <div
         id="installPrompt"
         class="install-prompt"
+        aria-hidden="true"
     >
 
         <div class="install-prompt-box">
 
             <button
+                id="installPromptClose"
                 class="install-prompt-close"
                 type="button"
-                onclick="closeInstallPrompt()"
                 aria-label="Close"
             >
                 ×
@@ -637,68 +606,40 @@
             <div class="install-steps">
 
                 <div>
-
-                    <strong>
-                        1
-                    </strong>
-
+                    <strong>1</strong>
                     <span>
-                        Tap the
-                        <b>Share ↑</b>
-                        button in Safari.
+                        Tap the <b>Share ↑</b> button in Safari.
                     </span>
-
                 </div>
 
-
                 <div>
-
-                    <strong>
-                        2
-                    </strong>
-
+                    <strong>2</strong>
                     <span>
-                        Tap
-                        <b>Add to Home Screen</b>.
+                        Tap <b>Add to Home Screen</b>.
                     </span>
-
                 </div>
 
-
                 <div>
-
-                    <strong>
-                        3
-                    </strong>
-
+                    <strong>3</strong>
                     <span>
-                        Turn on
-                        <b>Open as Web App</b>.
+                        Turn on <b>Open as Web App</b>.
                     </span>
-
                 </div>
 
-
                 <div>
-
-                    <strong>
-                        4
-                    </strong>
-
+                    <strong>4</strong>
                     <span>
-                        Tap
-                        <b>Add</b>.
+                        Tap <b>Add</b>.
                     </span>
-
                 </div>
 
             </div>
 
 
             <button
+                id="installPromptGotIt"
                 class="install-prompt-button"
                 type="button"
-                onclick="closeInstallPrompt()"
             >
                 GOT IT
             </button>
@@ -708,315 +649,11 @@
     </div>
 
 
-
     <!-- =====================================================
          JAVASCRIPT
     ====================================================== -->
 
     <script src="./practice.js"></script>
 
-
-    <!-- =====================================================
-         SMALL HTML HELPERS
-         These only control the modal UI.
-    ====================================================== -->
-
-    <script>
-
-        /* -----------------------------------------------
-           MANAGEMENT MODAL
-        ------------------------------------------------ */
-
-        function openManagement() {
-
-            const modal =
-                document.getElementById(
-                    "managementModal"
-                );
-
-            if (!modal) return;
-
-            modal.classList.remove("hidden");
-
-            document.body.style.overflow = "hidden";
-
-        }
-
-
-        function closeManagement() {
-
-            const modal =
-                document.getElementById(
-                    "managementModal"
-                );
-
-            if (!modal) return;
-
-            modal.classList.add("hidden");
-
-            document.body.style.overflow = "";
-
-        }
-
-
-
-        /* -----------------------------------------------
-           SONG DROPDOWN
-        ------------------------------------------------ */
-
-        const songButton =
-            document.getElementById(
-                "songButton"
-            );
-
-        const songMenu =
-            document.getElementById(
-                "songMenu"
-            );
-
-
-        if (songButton && songMenu) {
-
-            songButton.addEventListener(
-                "click",
-                function(event) {
-
-                    event.stopPropagation();
-
-                    songMenu.classList.toggle(
-                        "open"
-                    );
-
-                }
-            );
-
-        }
-
-
-        document.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    songMenu &&
-                    songButton &&
-                    !songMenu.contains(event.target) &&
-                    !songButton.contains(event.target)
-                ) {
-
-                    songMenu.classList.remove(
-                        "open"
-                    );
-
-                }
-
-            }
-        );
-
-
-
-        /* -----------------------------------------------
-           TRANSITION RANGE
-        ------------------------------------------------ */
-
-        const transitionRange =
-            document.getElementById(
-                "transitionTimeRange"
-            );
-
-
-        if (transitionRange) {
-
-            transitionRange.addEventListener(
-                "input",
-                function() {
-
-                    if (
-                        typeof saveTransitionSetting ===
-                        "function"
-                    ) {
-
-                        saveTransitionSetting(
-                            this.value
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-
-
-
-        /* -----------------------------------------------
-           MANUAL TRANSITION
-        ------------------------------------------------ */
-
-        const manualTransition =
-            document.getElementById(
-                "transitionTimeManual"
-            );
-
-
-        if (manualTransition) {
-
-            manualTransition.addEventListener(
-                "change",
-                function() {
-
-                    if (
-                        typeof saveManualTransitionSetting ===
-                        "function"
-                    ) {
-
-                        saveManualTransitionSetting(
-                            this.value
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-
-
-
-        /* -----------------------------------------------
-           EDIT MODAL
-        ------------------------------------------------ */
-
-        function closeEditModal() {
-
-            const modal =
-                document.getElementById(
-                    "editModal"
-                );
-
-            if (!modal) return;
-
-            modal.classList.add("hidden");
-
-            document.body.style.overflow = "";
-
-        }
-
-
-
-        /* -----------------------------------------------
-           IMPORT MODAL
-        ------------------------------------------------ */
-
-        function closeImportModal() {
-
-            const modal =
-                document.getElementById(
-                    "importModal"
-                );
-
-            if (!modal) return;
-
-            modal.classList.add("hidden");
-
-            document.body.style.overflow = "";
-
-        }
-
-
-
-        /* -----------------------------------------------
-           INSTALL PROMPT
-        ------------------------------------------------ */
-
-        function closeInstallPrompt() {
-
-            const prompt =
-                document.getElementById(
-                    "installPrompt"
-                );
-
-            if (!prompt) return;
-
-            prompt.classList.remove("show");
-
-            localStorage.setItem(
-                "vpLyricsInstallPromptDismissed",
-                "true"
-            );
-
-        }
-
-
-
-        /* -----------------------------------------------
-           CLOSE MODALS WITH ESC
-        ------------------------------------------------ */
-
-        document.addEventListener(
-            "keydown",
-            function(event) {
-
-                if (event.key !== "Escape") {
-                    return;
-                }
-
-                closeManagement();
-                closeEditModal();
-                closeImportModal();
-
-            }
-        );
-
-
-
-        /* -----------------------------------------------
-           INITIAL INSTALL PROMPT
-        ------------------------------------------------ */
-
-        function isStandalone() {
-
-            return (
-                window.matchMedia(
-                    "(display-mode: standalone)"
-                ).matches ||
-                window.navigator.standalone === true
-            );
-
-        }
-
-
-        if (
-            !isStandalone() &&
-            !localStorage.getItem(
-                "vpLyricsInstallPromptDismissed"
-            )
-        ) {
-
-            setTimeout(
-                function() {
-
-                    const prompt =
-                        document.getElementById(
-                            "installPrompt"
-                        );
-
-                    if (prompt) {
-
-                        prompt.classList.add(
-                            "show"
-                        );
-
-                    }
-
-                },
-                1000
-            );
-
-        }
-
-    </script>
-
 </body>
-
 </html>
