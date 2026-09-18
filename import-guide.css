@@ -1,0 +1,136 @@
+
+/* =========================================================
+   IMPORT GUIDE
+========================================================= */
+
+#importGuide {
+    margin-top: 18px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.035);
+    color: #e9edf3;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+.import-guide-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.import-guide-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 28px;
+    background: rgba(255,255,255,0.09);
+    color: #fff;
+    font-size: 15px;
+}
+
+.import-guide-title {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.import-guide-subtitle {
+    margin-top: 4px;
+    color: #9da6b3;
+    font-size: 13px;
+}
+
+.import-guide-steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.import-guide-step {
+    display: flex;
+    gap: 11px;
+    padding: 12px;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.035);
+}
+
+.import-guide-number {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 24px;
+    background: rgba(255,255,255,0.10);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.import-guide-step strong {
+    display: block;
+    font-size: 13px;
+}
+
+.import-guide-step p {
+    margin: 4px 0 0;
+    color: #aab2bd;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.import-guide-step code,
+.import-guide-example code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    color: #f2f4f7;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.import-guide-example {
+    margin-top: 14px;
+}
+
+.import-guide-example-title {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #cbd2db;
+}
+
+.import-guide-example pre {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.22);
+    color: #dfe4ea;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.import-guide-note {
+    margin-top: 12px;
+    color: #9da6b3;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.import-guide-note strong {
+    color: #cbd2db;
+}
+
+@media (max-width: 700px) {
+    .import-guide-steps {
+        grid-template-columns: 1fr;
+    }
+}

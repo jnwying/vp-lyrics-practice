@@ -1,0 +1,2370 @@
+/* =========================================================
+   VP LYRICS CONTROL
+   Main Stylesheet
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #101010;
+    color: #ffffff;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.main-header {
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background: #181818;
+
+    border-bottom: 1px solid #303030;
+
+    position: relative;
+
+    z-index: 100;
+}
+
+
+.header-left {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+
+    gap: 35px;
+}
+
+
+.main-header h1 {
+    font-size: 17px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabs {
+    display: flex;
+    align-items: stretch;
+
+    height: 100%;
+
+    gap: 4px;
+}
+
+
+.tab-button {
+    height: 100%;
+
+    padding: 0 18px;
+
+    background: transparent;
+
+    border: none;
+    border-bottom: 3px solid transparent;
+
+    color: #888888;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.tab-button:hover {
+    color: #ffffff;
+
+    background: #202020;
+}
+
+
+.tab-button.active {
+    color: #ffffff;
+
+    border-bottom-color: #ffffff;
+}
+
+
+/* =========================================================
+   TOP CONTROLS
+========================================================= */
+
+.top-controls {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.output-on,
+.output-off {
+    height: 34px;
+
+    padding: 0 14px;
+
+    border-radius: 4px;
+
+    border: 1px solid #3a3a3a;
+
+    background: #202020;
+
+    color: #777777;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+
+.output-on:hover,
+.output-off:hover {
+    background: #292929;
+
+    color: #ffffff;
+}
+
+
+.output-on.active {
+    background: #1f3a27;
+
+    border-color: #3d7048;
+
+    color: #72d488;
+}
+
+
+.output-off.active {
+    background: #3b2020;
+
+    border-color: #704040;
+
+    color: #ff8585;
+}
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.menu-button {
+    width: 36px;
+    height: 34px;
+
+    margin-left: 4px;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 4px;
+
+    background: #202020;
+
+    color: #bbbbbb;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.15s ease;
+}
+
+
+.menu-button:hover {
+    background: #2b2b2b;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MANAGEMENT POPUP
+========================================================= */
+
+.management-popup {
+    position: fixed;
+
+    top: 58px;
+    right: 18px;
+
+    width: 245px;
+
+    background: #1d1d1d;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.45);
+
+    z-index: 1000;
+
+    display: none;
+
+    overflow: hidden;
+}
+
+
+.management-popup.open {
+    display: block;
+}
+
+
+.popup-header {
+    height: 48px;
+
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #242424;
+
+    border-bottom: 1px solid #353535;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+.popup-close {
+    width: 26px;
+    height: 26px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #888888;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+
+.popup-close:hover {
+    color: #ffffff;
+}
+
+
+.popup-actions {
+    padding: 8px;
+}
+
+
+.popup-actions button {
+    width: 100%;
+
+    height: 40px;
+
+    margin-bottom: 4px;
+
+    padding: 0 12px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: transparent;
+
+    color: #cccccc;
+
+    text-align: left;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+}
+
+
+.popup-actions button:hover {
+    background: #303030;
+
+    color: #ffffff;
+}
+
+
+.popup-actions button:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.main-container {
+    height: calc(100vh - 64px);
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 430px;
+
+    background: #0e0e0e;
+}
+
+
+/* =========================================================
+   PREVIEW PANEL
+========================================================= */
+
+.preview-panel {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    background: #080808;
+
+    border-right: 1px solid #292929;
+}
+
+
+.preview-title {
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    color: #777777;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border-bottom: 1px solid #202020;
+}
+
+
+.lyric-output {
+    flex: 1;
+transition: opacity 0.3s ease;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px;
+
+    text-align: center;
+
+    font-size: clamp(22px, 3vw, 48px);
+
+    line-height: 1.35;
+
+    color: #ffffff;
+
+    transition: opacity 0.3s ease;
+}
+
+
+.lyric-output.fade-out {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   CONTROLS PANEL
+========================================================= */
+
+.controls-panel {
+    min-width: 0;
+
+    background: #151515;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding-bottom: 30px;
+}
+
+
+/* Scrollbar */
+
+.controls-panel::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.controls-panel::-webkit-scrollbar-track {
+    background: #111111;
+}
+
+
+.controls-panel::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+
+    border-radius: 4px;
+}
+
+
+.controls-panel::-webkit-scrollbar-thumb:hover {
+    background: #4d4d4d;
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.tab-content {
+    display: none;
+
+    padding: 18px;
+}
+
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* =========================================================
+   CURRENT SONG
+========================================================= */
+
+.current-song {
+    margin-bottom: 13px;
+}
+
+
+.current-song-label {
+    margin-bottom: 5px;
+
+    color: #777777;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+#songTitleDisplay {
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   PANEL TITLE
+========================================================= */
+
+.panel-title {
+    margin-bottom: 7px;
+
+    color: #777777;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   SONG DROPDOWN
+========================================================= */
+
+.song-library-panel {
+    position: relative;
+
+    margin-bottom: 18px;
+}
+
+
+.song-dropdown {
+    position: relative;
+
+    width: 100%;
+}
+
+
+.song-dropdown-button {
+    width: 100%;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 13px;
+
+    background: #090909;
+
+    border: 1px solid #3a3a3a;
+
+    border-radius: 4px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.song-dropdown-button:hover {
+    background: #292929;
+
+    border-color: #4a4a4a;
+}
+
+
+.dropdown-arrow {
+    color: #888888;
+
+    font-size: 9px;
+}
+
+
+/* Dropdown menu */
+
+.song-dropdown-menu {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: calc(100% + 5px);
+
+    background: #202020;
+
+    border: 1px solid #3d3d3d;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4);
+
+    z-index: 500;
+
+    display: none;
+
+    max-height: 260px;
+
+    overflow-y: auto;
+}
+
+
+.song-dropdown-menu.open {
+    display: block;
+}
+
+
+/* Dropdown scrollbar */
+
+.song-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+.song-dropdown-menu::-webkit-scrollbar-track {
+    background: #181818;
+}
+
+
+.song-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #444444;
+
+    border-radius: 4px;
+}
+
+
+/* =========================================================
+   SONG LIBRARY BUTTONS
+========================================================= */
+
+#songLibrary {
+    padding: 5px;
+}
+
+
+#songLibrary button {
+    width: 100%;
+
+    min-height: 38px;
+
+    padding: 8px 10px;
+
+    border: none;
+
+    border-radius: 3px;
+
+    background: transparent;
+
+    color: #bbbbbb;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+#songLibrary button:hover {
+    background: #303030;
+
+    color: #ffffff;
+}
+
+
+#songLibrary button.song-selected {
+    background: #343434;
+
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+#sections {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.section {
+    background: #1b1b1b;
+
+    border: 1px solid #303030;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+
+.section-header {
+    min-height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 7px 10px;
+
+    background: #242424;
+
+    border-bottom: 1px solid #303030;
+}
+
+
+.section-header strong,
+.section-header h3 {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+
+.section-title {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SLIDE GRID
+========================================================= */
+
+.slide-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(65px, 1fr));
+
+    gap: 5px;
+
+    padding: 9px;
+}
+
+
+.slide-grid button {
+    min-height: 42px;
+
+    padding: 7px 4px;
+
+    background: #292929;
+
+    border: 1px solid #3b3b3b;
+
+    border-radius: 3px;
+
+    color: #bbbbbb;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.12s ease;
+}
+
+
+.slide-grid button:hover {
+    background: #353535;
+
+    color: #ffffff;
+
+    border-color: #505050;
+}
+
+
+.slide-grid button.selected {
+    background: #d6b85a;
+
+    color: #111111;
+
+    border-color: #e0c66a;
+
+    box-shadow: 0 0 8px rgba(214, 184, 90, 0.25);
+}
+
+
+/* =========================================================
+   ADD SECTION BUTTON
+========================================================= */
+
+.add-section-button {
+    width: 100%;
+
+    height: 38px;
+
+    margin-top: 12px;
+
+    border: 1px dashed #444444;
+
+    border-radius: 4px;
+
+    background: transparent;
+
+    color: #888888;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+}
+
+
+.add-section-button:hover {
+    background: #202020;
+
+    border-color: #666666;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   IMPORT TAB
+========================================================= */
+
+.tab-heading {
+    margin-bottom: 16px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    color: #ffffff;
+}
+
+
+.import-description {
+    margin-bottom: 12px;
+
+    padding: 11px;
+
+    background: #1d1d1d;
+
+    border: 1px solid #2e2e2e;
+
+    border-radius: 4px;
+
+    color: #888888;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+.import-description strong {
+    color: #bbbbbb;
+}
+
+
+.lyrics-input {
+    width: 100%;
+
+    min-height: 360px;
+
+    resize: vertical;
+
+    padding: 12px;
+
+    background: #0e0e0e;
+
+    border: 1px solid #353535;
+
+    border-radius: 4px;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    outline: none;
+}
+
+
+.lyrics-input:focus {
+    border-color: #666666;
+}
+
+
+.lyrics-input::placeholder {
+    color: #555555;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-button {
+    width: 100%;
+
+    height: 40px;
+
+    margin-top: 10px;
+
+    border: 1px solid #4a4a4a;
+
+    border-radius: 4px;
+
+    background: #303030;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    cursor: pointer;
+}
+
+
+.primary-button:hover {
+    background: #3a3a3a;
+
+    border-color: #5a5a5a;
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+.form-group {
+    margin-bottom: 13px;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #777777;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+.form-group input,
+.section-editor input,
+.slide-editor input,
+.section-editor textarea,
+.slide-editor textarea {
+    width: 100%;
+
+    padding: 9px 10px;
+
+    background: #0f0f0f;
+
+    border: 1px solid #353535;
+
+    border-radius: 4px;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    outline: none;
+}
+
+
+.form-group input {
+    height: 38px;
+}
+
+
+.form-group input:focus,
+.section-editor input:focus,
+.slide-editor input:focus,
+.section-editor textarea:focus,
+.slide-editor textarea:focus {
+    border-color: #666666;
+}
+
+
+/* =========================================================
+   SECTION EDITOR
+========================================================= */
+
+.section-editor-container {
+    margin-top: 20px;
+}
+
+
+.section-editor {
+    margin-bottom: 14px;
+
+    padding: 12px;
+
+    background: #1b1b1b;
+
+    border: 1px solid #303030;
+
+    border-radius: 5px;
+}
+
+
+.section-editor h3 {
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    color: #ffffff;
+}
+
+
+.section-editor label,
+.slide-editor label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #777777;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+.section-editor input {
+    margin-bottom: 10px;
+
+    height: 35px;
+}
+
+
+/* =========================================================
+   SLIDE EDITOR
+========================================================= */
+
+.slide-editor {
+    margin-top: 8px;
+
+    padding: 9px;
+
+    background: #151515;
+
+    border: 1px solid #292929;
+
+    border-radius: 4px;
+}
+
+
+.slide-editor input {
+    height: 34px;
+
+    margin-bottom: 7px;
+}
+
+
+.slide-editor textarea {
+    min-height: 75px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   EDITOR BUTTONS
+========================================================= */
+
+.section-editor button,
+.slide-editor button {
+    min-height: 30px;
+
+    margin-top: 7px;
+
+    padding: 0 10px;
+
+    border: 1px solid #3d3d3d;
+
+    border-radius: 3px;
+
+    background: #252525;
+
+    color: #aaaaaa;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.section-editor button:hover,
+.slide-editor button:hover {
+    background: #333333;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   EMPTY STATES
+========================================================= */
+
+.empty-state {
+    padding: 25px 10px;
+
+    text-align: center;
+
+    color: #666666;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    body {
+        overflow: auto;
+    }
+
+
+    .main-header {
+        height: auto;
+
+        min-height: 64px;
+
+        padding: 10px 12px;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+
+    .header-left {
+        width: 100%;
+
+        height: 40px;
+
+        gap: 15px;
+    }
+
+
+    .main-header h1 {
+        font-size: 13px;
+    }
+
+
+    .tabs {
+        height: 40px;
+    }
+
+
+    .tab-button {
+        padding: 0 9px;
+
+        font-size: 9px;
+    }
+
+
+    .top-controls {
+        position: absolute;
+
+        right: 12px;
+
+        top: 13px;
+    }
+
+
+    .output-on,
+    .output-off {
+        padding: 0 8px;
+
+        font-size: 9px;
+    }
+
+
+    .menu-button {
+        width: 32px;
+    }
+
+
+    .main-container {
+        height: auto;
+
+        min-height: calc(100vh - 64px);
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    .preview-panel {
+        min-height: 45vh;
+
+        border-right: none;
+
+        border-bottom: 1px solid #292929;
+    }
+
+
+    .controls-panel {
+        min-height: 55vh;
+
+        overflow: visible;
+    }
+
+
+    .lyric-output {
+        padding: 30px;
+
+        font-size: 25px;
+    }
+
+
+    .management-popup {
+        top: 60px;
+
+        right: 10px;
+
+        width: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .main-header {
+        padding-bottom: 0;
+    }
+
+
+    .header-left {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        height: auto;
+
+        gap: 0;
+    }
+
+
+    .main-header h1 {
+        height: 35px;
+
+        display: flex;
+
+        align-items: center;
+    }
+
+
+    .tabs {
+        width: 100%;
+
+        height: 35px;
+    }
+
+
+    .tab-button {
+        flex: 1;
+
+        padding: 0;
+    }
+
+
+    .top-controls {
+        top: 9px;
+    }
+
+
+    .output-on,
+    .output-off {
+        display: none;
+    }
+
+
+    .preview-panel {
+        min-height: 40vh;
+    }
+
+
+    .controls-panel {
+        min-height: 60vh;
+    }
+
+
+    .tab-content {
+        padding: 14px;
+    }
+
+}
+
+.lyric-output {
+    transition: opacity 0.3s ease;
+}
+
+.lyric-output.fade-out {
+    opacity: 0;
+}
+
+/* =========================================================
+   MANUAL
+========================================================= */
+
+.manual-section {
+    margin-bottom: 20px;
+
+    padding: 14px;
+
+    background: #1b1b1b;
+
+    border: 1px solid #303030;
+
+    border-radius: 5px;
+}
+
+
+.manual-section h3 {
+    margin-bottom: 13px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    letter-spacing: 0.8px;
+}
+
+
+.manual-item {
+    margin-bottom: 15px;
+
+    color: #999999;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+.manual-item:last-child {
+    margin-bottom: 0;
+}
+
+
+.manual-item strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #dddddd;
+
+    font-size: 10px;
+}
+
+
+.manual-item p {
+    margin-bottom: 7px;
+}
+
+
+.manual-item ul {
+    margin-top: 7px;
+
+    padding-left: 18px;
+}
+
+
+.manual-item li {
+    margin-bottom: 4px;
+}
+
+
+.manual-code {
+    margin: 8px 0;
+
+    padding: 10px;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 4px;
+
+    color: #bbbbbb;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+.shortcut-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px;
+
+    background: #101010;
+
+    border: 1px solid #292929;
+
+    border-radius: 4px;
+}
+
+
+.shortcut-row span:first-child {
+    padding: 6px 9px;
+
+    background: #303030;
+
+    border: 1px solid #444444;
+
+    border-radius: 4px;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+.shortcut-row span:last-child {
+    color: #999999;
+
+    font-size: 10px;
+}
+
+.move-slides-button {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: #252525;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #bbb;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    cursor: pointer;
+}
+
+.move-slides-button:hover {
+    background: #303030;
+    color: #fff;
+}
+
+.move-slides-button.active {
+    background: #d6b85a;
+    border-color: #e0c66a;
+    color: #111;
+}
+
+.slide-editor.slide-move-mode {
+    cursor: grab;
+    border-color: #555;
+}
+
+.slide-editor.slide-move-mode:hover {
+    border-color: #777;
+}
+
+.slide-editor.dragging {
+    opacity: 0.45;
+    cursor: grabbing;
+}
+
+.slide-editor.drag-over {
+    border-color: #d6b85a;
+    box-shadow: 0 0 0 1px #d6b85a;
+}
+
+/* Hide section names on the SONGS / controls page */
+#sections .section-header {
+    display: none;
+}
+
+/* Keep the slide grid spacing clean */
+#sections .slide-grid {
+    margin-top: 0;
+}
+/* VP LYRICS CONTROL — POLISHED DARK CONTROL UI
+   CSS ONLY — load this AFTER your existing stylesheet. */
+
+:root {
+    --vp-bg: #0b0c0e;
+    --vp-panel: #121416;
+    --vp-card: #1b1e22;
+    --vp-border: rgba(255,255,255,.09);
+    --vp-border-strong: rgba(255,255,255,.14);
+    --vp-text: #f2f3f4;
+    --vp-muted: #969ba2;
+    --vp-green: #39c875;
+    --vp-green-soft: rgba(57,200,117,.13);
+    --vp-red: #e45d5d;
+    --vp-red-soft: rgba(228,93,93,.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    color: var(--vp-text);
+    background: #000;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea, select { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+
+/* HEADER */
+header, .top-bar, .header, .navbar, #header {
+    background: #151719;
+    border-bottom: 1px solid var(--vp-border);
+}
+
+#appTitle, .app-title, .logo, .brand, header .title {
+    color: #f4f4f4;
+    font-weight: 750;
+    letter-spacing: .045em;
+}
+
+/* TABS */
+.tab-button {
+    position: relative;
+    min-height: 58px;
+    padding: 0 22px;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #7f8389 !important;
+    font-size: 13px;
+    font-weight: 750;
+    letter-spacing: .07em;
+    transition: color .18s ease, background .18s ease;
+}
+
+.tab-button:hover {
+    color: #d5d8db !important;
+    background: rgba(255,255,255,.025) !important;
+}
+
+.tab-button.active { color: #f4f5f6 !important; }
+
+.tab-button.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: #f1f2f3;
+}
+
+/* OUTPUT */
+#outputOnButton, #outputOffButton {
+    min-width: 74px;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid var(--vp-border-strong) !important;
+    border-radius: 8px !important;
+    background: #1b1d20 !important;
+    color: #858a90 !important;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .06em;
+    transition: background .18s ease, color .18s ease,
+        border-color .18s ease, transform .12s ease;
+}
+
+#outputOnButton:hover, #outputOffButton:hover { transform: translateY(-1px); }
+
+#outputOnButton.active {
+    background: var(--vp-green-soft) !important;
+    border-color: rgba(57,200,117,.48) !important;
+    color: #6ee29a !important;
+}
+
+#outputOffButton.active {
+    background: var(--vp-red-soft) !important;
+    border-color: rgba(228,93,93,.45) !important;
+    color: #f08383 !important;
+}
+
+#settingsButton, .settings-button,
+button[aria-label*="Settings"], button[title*="Settings"] {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--vp-border) !important;
+    border-radius: 8px !important;
+    background: #1b1d20 !important;
+    color: #a8adb3 !important;
+}
+
+#settingsButton:hover, .settings-button:hover,
+button[aria-label*="Settings"]:hover, button[title*="Settings"]:hover {
+    background: #24272b !important;
+    color: #fff !important;
+}
+
+/* MAIN / PREVIEW */
+#main, .main, .content, .workspace, .main-content {
+    background: var(--vp-bg);
+}
+
+#preview, .preview, .preview-panel, .output-preview, #outputPreview {
+    background: radial-gradient(circle at 50% 45%,
+        rgba(255,255,255,.018), transparent 42%), #050607;
+    border-right: 1px solid var(--vp-border);
+}
+
+#preview h2, .preview h2, .preview-title, .output-preview-title {
+    color: #747980;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .13em;
+}
+
+#lyric {
+    color: #f5f5f5;
+    font-weight: 500;
+    letter-spacing: -.02em;
+}
+
+/* EDITOR */
+#editor, .editor, .editor-panel, .control-panel {
+    background: #121416;
+}
+
+#editor h2, #editor h3, #editor h4,
+.editor h2, .editor h3, .editor h4 {
+    color: #e7e9eb;
+    font-weight: 750;
+    letter-spacing: .035em;
+}
+
+#songTitle {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 13px;
+    border: 1px solid var(--vp-border-strong) !important;
+    border-radius: 8px !important;
+    background: #0d0f11 !important;
+    color: #f2f3f4 !important;
+    outline: none;
+}
+
+#songTitle:focus {
+    border-color: rgba(255,255,255,.32) !important;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.045);
+}
+
+#editor label, .editor label, #sectionEditor label {
+    color: #777d84;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+#saveSongButton, .save-song-button {
+    min-height: 46px;
+    border: 1px solid rgba(255,255,255,.13) !important;
+    border-radius: 8px !important;
+    background: #292c30 !important;
+    color: #f0f1f2 !important;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .06em;
+}
+
+#saveSongButton:hover, .save-song-button:hover {
+    background: #34383d !important;
+}
+
+/* COMPACT EDITOR */
+#sectionEditor {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+#sectionEditor .edit-part-card,
+#sectionEditor .section-editor {
+    overflow: hidden;
+    margin: 0 !important;
+    border: 1px solid var(--vp-border) !important;
+    border-radius: 10px !important;
+    background: #17191c !important;
+    box-shadow: 0 1px 0 rgba(255,255,255,.02) inset;
+    transition: border-color .18s ease, background .18s ease;
+}
+
+#sectionEditor .edit-part-card:hover {
+    border-color: rgba(255,255,255,.14) !important;
+}
+
+#sectionEditor .edit-part-card.dragging { opacity: .55; }
+
+#sectionEditor .edit-part-card.part-drag-over {
+    border-color: rgba(255,255,255,.4) !important;
+    box-shadow: 0 0 0 2px rgba(255,255,255,.08);
+}
+
+#sectionEditor .part-compact-header {
+    min-height: 52px;
+    padding: 8px 12px;
+    gap: 9px;
+    background: linear-gradient(180deg,
+        rgba(255,255,255,.025), rgba(255,255,255,.008));
+}
+
+#sectionEditor .part-compact-header:hover {
+    background: rgba(255,255,255,.035);
+}
+
+#sectionEditor .part-drag-handle,
+#sectionEditor .lyric-drag-handle {
+    width: 25px;
+    color: #8c9299;
+    font-size: 17px;
+    opacity: .65;
+    cursor: grab;
+}
+
+#sectionEditor .part-drag-handle:hover,
+#sectionEditor .lyric-drag-handle:hover {
+    color: #e0e3e6;
+    opacity: 1;
+}
+
+#sectionEditor .part-toggle,
+#sectionEditor .lyric-toggle {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--vp-border-strong) !important;
+    border-radius: 6px !important;
+    background: #202327 !important;
+    color: #aeb3b8 !important;
+    font-size: 12px;
+}
+
+#sectionEditor .part-toggle:hover,
+#sectionEditor .lyric-toggle:hover {
+    background: #2a2e33 !important;
+    color: #fff !important;
+}
+
+#sectionEditor .part-compact-title {
+    color: #f0f1f2;
+    font-size: 15px;
+    font-weight: 720;
+    letter-spacing: -.01em;
+}
+
+/* EXPANDED SECTION */
+#sectionEditor .part-collapsible-body {
+    padding: 0 12px 12px !important;
+    border-top: 1px solid rgba(255,255,255,.055);
+    background: rgba(0,0,0,.08);
+}
+
+#sectionEditor .part-collapsible-body.part-collapsed-body { display: none; }
+
+#sectionEditor input, #sectionEditor textarea {
+    border: 1px solid rgba(255,255,255,.11) !important;
+    border-radius: 7px !important;
+    background: #0f1113 !important;
+    color: #eceeef !important;
+    outline: none;
+}
+
+#sectionEditor input:focus, #sectionEditor textarea:focus {
+    border-color: rgba(255,255,255,.28) !important;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.035);
+}
+
+/* LYRIC ROWS */
+#sectionEditor .compact-lyrics-list {
+    gap: 5px;
+    margin: 9px 0 4px;
+}
+
+#sectionEditor .compact-lyric-row {
+    min-height: 42px;
+    padding: 6px 9px;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,.075) !important;
+    border-radius: 7px !important;
+    background: rgba(255,255,255,.025) !important;
+    transition: background .15s ease, border-color .15s ease;
+}
+
+#sectionEditor .compact-lyric-row:hover {
+    background: rgba(255,255,255,.05) !important;
+    border-color: rgba(255,255,255,.13) !important;
+}
+
+#sectionEditor .compact-lyric-row.dragging { opacity: .45; }
+
+#sectionEditor .compact-lyric-row.drag-over {
+    border-color: rgba(255,255,255,.4) !important;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.08);
+}
+
+#sectionEditor .lyric-code {
+    flex: 0 0 42px;
+    color: #aeb4ba;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+#sectionEditor .lyric-preview {
+    color: #aeb2b7;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+#sectionEditor .compact-lyric-row.lyric-expanded {
+    background: #1c1f23 !important;
+    border-color: rgba(255,255,255,.14) !important;
+}
+
+#sectionEditor .compact-lyric-row.lyric-expanded .lyric-edit-body {
+    padding: 9px 0 3px 34px;
+}
+
+#sectionEditor .compact-lyric-row textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    resize: vertical;
+    line-height: 1.45;
+}
+
+/* SCROLLBARS */
+#editor::-webkit-scrollbar, .editor::-webkit-scrollbar,
+#sectionEditor::-webkit-scrollbar { width: 8px; }
+
+#editor::-webkit-scrollbar-track, .editor::-webkit-scrollbar-track,
+#sectionEditor::-webkit-scrollbar-track { background: transparent; }
+
+#editor::-webkit-scrollbar-thumb, .editor::-webkit-scrollbar-thumb,
+#sectionEditor::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.14);
+    border-radius: 10px;
+}
+
+#editor::-webkit-scrollbar-thumb:hover, .editor::-webkit-scrollbar-thumb:hover,
+#sectionEditor::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,.22);
+}
+
+#editor, .editor, #sectionEditor {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.16) transparent;
+}
+
+button {
+    transition: background .16s ease, border-color .16s ease,
+        color .16s ease, transform .12s ease;
+}
+
+button:active { transform: translateY(1px); }
+
+@media (max-width: 900px) {
+    .tab-button { padding: 0 14px; }
+    #sectionEditor .part-compact-title { font-size: 14px; }
+}
+
+@media (max-width: 700px) {
+    #outputOnButton, #outputOffButton {
+        min-width: 62px;
+        padding: 0 10px;
+    }
+
+    .tab-button {
+        min-height: 52px;
+        padding: 0 10px;
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   SONG DROPDOWN — JS GENERATED CONTROL
+   ========================================================= */
+
+#songLibrary.song-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+#songLibrary .song-dropdown-trigger {
+    width: 100%;
+}
+
+#songLibrary .song-dropdown-menu {
+    display: none;
+}
+
+#songLibrary .song-dropdown-menu.open {
+    display: block;
+}
+
+/* =========================================================
+   SONG LIBRARY — DEFINED DROPDOWN
+   ========================================================= */
+
+#songLibrary {
+    position: relative;
+}
+
+/* Dropdown button / current selection */
+#songLibrary .song-dropdown-trigger,
+#songLibrary .song-dropdown-button,
+#songLibrary .selected-song {
+    width: 100%;
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 14px;
+
+    background: #242527 !important;
+
+    border: 1px solid #55575a !important;
+    border-radius: 6px !important;
+
+    color: #f0f0f0 !important;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        border-color .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
+}
+
+/* Hover */
+#songLibrary .song-dropdown-trigger:hover,
+#songLibrary .song-dropdown-button:hover,
+#songLibrary .selected-song:hover {
+    background: #2b2d2f !important;
+    border-color: #707276 !important;
+}
+
+/* When dropdown is open */
+#songLibrary .song-dropdown-trigger.open,
+#songLibrary .song-dropdown-button.open,
+#songLibrary .selected-song.open {
+    border-color: #8a8c90 !important;
+
+    background: #292b2d !important;
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.05);
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+#songLibrary .dropdown-arrow,
+#songLibrary .song-dropdown-arrow {
+    color: #bfc1c4 !important;
+
+    font-size: 13px;
+
+    transition: transform .15s ease;
+}
+
+
+/* Rotate arrow when open */
+
+#songLibrary .open .dropdown-arrow,
+#songLibrary .open .song-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   DROPDOWN MENU
+   ========================================================= */
+
+#songLibrary .song-dropdown-menu,
+#songLibrary .dropdown-menu {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    margin-top: 5px;
+
+    padding: 5px;
+
+    background: #1b1d1f !important;
+
+    border: 1px solid #55575a !important;
+    border-radius: 7px !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.45);
+
+    overflow: hidden;
+}
+
+
+/* Individual song */
+
+#songLibrary .song-dropdown-option,
+#songLibrary .dropdown-option {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 42px;
+
+    padding: 0 12px;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #c5c7ca;
+
+    font-size: 13px;
+    font-weight: 550;
+
+    cursor: pointer;
+
+    transition:
+        background .12s ease,
+        color .12s ease;
+}
+
+
+/* Hover */
+
+#songLibrary .song-dropdown-option:hover,
+#songLibrary .dropdown-option:hover {
+    background: #2b2d2f;
+
+    color: #fff;
+}
+
+
+/* Currently selected song */
+
+#songLibrary .song-dropdown-option.selected,
+#songLibrary .dropdown-option.selected {
+    background: #343638;
+
+    color: #fff;
+
+    font-weight: 700;
+}
+
+
+/* Checkmark */
+
+#songLibrary .song-dropdown-option.selected::after,
+#songLibrary .dropdown-option.selected::after {
+    content: "✓";
+
+    margin-left: auto;
+
+    color: #e5c65c;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SONG LIBRARY LABEL
+   ========================================================= */
+
+#songLibraryLabel {
+    margin-bottom: 8px;
+
+    color: #85898f;
+
+    font-size: 10px;
+    font-weight: 750;
+
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+/* =========================================================
+   TRANSITION SETTINGS
+========================================================= */
+
+.settings-divider {
+    height: 1px;
+    background: #333;
+    margin: 12px 0;
+}
+
+.transition-settings {
+    padding: 4px 2px 2px;
+}
+
+.transition-settings-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.transition-settings label {
+    display: block;
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+.transition-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#transitionTimeRange {
+    flex: 1;
+    width: 100%;
+    cursor: pointer;
+}
+
+#transitionTimeValue {
+    min-width: 48px;
+    text-align: right;
+    font-size: 12px;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+.manual-transition {
+    margin-top: 12px;
+}
+
+.manual-transition label {
+    margin-bottom: 6px;
+}
+
+.manual-transition-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#transitionTimeManual {
+    width: 70px;
+    box-sizing: border-box;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px 8px;
+    font-size: 12px;
+    outline: none;
+}
+
+#transitionTimeManual:focus {
+    border-color: #888;
+}
+
+.manual-transition-input span {
+    font-size: 12px;
+    color: #999;
+}
+/* =========================================================
+   ADD SONG MODAL
+========================================================= */
+
+.add-song-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    z-index: 9999;
+}
+
+.add-song-dialog {
+    width: 360px;
+
+    background: #1d1d1d;
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    padding: 24px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.add-song-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+.add-song-label {
+    font-size: 12px;
+    color: #aaa;
+
+    margin-bottom: 8px;
+}
+
+.add-song-input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 5px;
+
+    color: #fff;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.add-song-input:focus {
+    border-color: #888;
+}
+
+.add-song-input::placeholder {
+    color: #666;
+}
+
+.add-song-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.add-song-buttons button {
+    border: 1px solid #444;
+    border-radius: 5px;
+
+    padding: 9px 14px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+}
+
+.add-song-cancel {
+    background: #222;
+    color: #aaa;
+}
+
+.add-song-cancel:hover {
+    background: #2b2b2b;
+    color: #fff;
+}
+
+.add-song-confirm {
+    background: #e0bd52;
+    border-color: #e0bd52 !important;
+    color: #111;
+}
+
+.add-song-confirm:hover {
+    background: #edcb68;
+}
