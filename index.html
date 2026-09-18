@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0c0d0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="practice.css">
+  <title>VP Lyrics Practice</title>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <div class="app-kicker">VP</div>
+      <h1>LYRICS PRACTICE</h1>
+    </div>
+    <button id="manageButton" class="icon-button" type="button" aria-label="Song management">⚙</button>
+  </header>
+
+  <main class="app">
+    <!-- SONG -->
+    <section class="song-card">
+      <button id="songButton" class="song-button" type="button">
+        <span id="songName">The Blood</span>
+        <span class="dropdown-arrow">⌄</span>
+      </button>
+      <div id="songMenu" class="song-menu"></div>
+    </section>
+
+    <!-- PREVIEW -->
+    <section class="preview-card">
+      <div class="preview-label">PRACTICE PREVIEW</div>
+      <div id="lyric" class="lyric-output"></div>
+      <div id="currentCode" class="current-code">V1A</div>
+    </section>
+
+    <!-- ON / OFF -->
+    <section class="output-card">
+      <button id="onButton" class="output-button on active" type="button">● ON</button>
+      <button id="offButton" class="output-button off" type="button">● OFF</button>
+    </section>
+
+    <!-- SLIDES -->
+    <section class="slides-card">
+      <div class="section-title">SLIDES</div>
+      <div id="sections"></div>
+    </section>
+  </main>
+
+  <!-- SONG MANAGEMENT -->
+  <div id="managementModal" class="modal hidden">
+    <div class="modal-dialog management-dialog">
+      <div class="modal-header">
+        <strong>SONG MANAGEMENT</strong>
+        <button id="closeManagement" class="close-button" type="button">×</button>
+      </div>
+
+      <button id="addSongButton" class="management-action" type="button">＋ ADD SONG</button>
+      <button id="editSongButton" class="management-action" type="button">✎ EDIT SONG</button>
+      <button id="deleteSongButton" class="management-action danger" type="button">♜ DELETE SONG</button>
+      <button id="saveLibraryButton" class="management-action" type="button">▣ SAVE LIBRARY</button>
+      <button id="resetButton" class="management-action danger" type="button">↻ RESET LIBRARY</button>
+
+      <div class="divider"></div>
+
+      <div class="management-heading">TRANSITION SETTINGS</div>
+
+      <label class="setting-label" for="timingRange">Transition Timing</label>
+      <div class="timing-row">
+        <input id="timingRange" type="range" min="0" max="500" step="10" value="300">
+        <span id="timingValue">0.30 sec</span>
+      </div>
+      <div class="range-labels">
+        <span>0.00</span>
+        <span>0.50 sec</span>
+      </div>
+
+      <div class="manual-row">
+        <label for="timingManual">Manual Timing</label>
+        <input id="timingManual" type="number" min="0" max="5" step="0.01" value="0.30">
+        <span>sec</span>
+      </div>
+      <button id="closeManagementBottom" class="close-management-button" type="button">CLOSE</button>
+    </div>
+  </div>
+
+  <!-- ADD SONG -->
+  <div id="addSongModal" class="modal hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <strong>ADD SONG</strong>
+        <button id="closeAddSong" class="close-button" type="button">×</button>
+      </div>
+
+      <label class="modal-label" for="newSongTitle">SONG TITLE</label>
+      <input id="newSongTitle" class="modal-input" type="text" placeholder="Song title" autocomplete="off">
+
+      <div class="modal-buttons">
+        <button id="cancelAddSong" class="secondary-button" type="button">CANCEL</button>
+        <button id="confirmAddSong" class="primary-button" type="button">ADD SONG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT SONG -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-dialog edit-dialog">
+      <div class="modal-header">
+        <strong>EDIT SONG</strong>
+        <button id="closeEdit" class="close-button" type="button">×</button>
+      </div>
+
+      <label class="modal-label" for="editSongTitle">SONG TITLE</label>
+      <input id="editSongTitle" class="modal-input" type="text" autocomplete="off">
+
+      <div id="editSections" class="edit-sections"></div>
+
+      <button id="addEditSection" class="management-action" type="button">＋ ADD SECTION</button>
+
+      <div class="modal-buttons">
+        <button id="cancelEdit" class="secondary-button" type="button">CANCEL</button>
+        <button id="saveEdit" class="primary-button" type="button">SAVE CHANGES</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORT -->
+  <div id="importModal" class="modal hidden">
+    <div class="modal-dialog large">
+      <div class="modal-header">
+        <strong>IMPORT LYRICS</strong>
+        <button id="closeImport" class="close-button" type="button">×</button>
+      </div>
+
+      <p class="helper">
+        Use headings such as Verse 1, Chorus, Bridge 1, Pre-Chorus, Intro, Outro or Tag on their own line.
+      </p>
+
+      <textarea id="lyricsInput" class="lyrics-input" placeholder="Verse 1
+Everything changed...
+The person I was...
+
+Chorus
+Hallelujah..."></textarea>
+
+      <div class="modal-buttons">
+        <button id="cancelImport" class="secondary-button" type="button">CANCEL</button>
+        <button id="confirmImport" class="primary-button" type="button">IMPORT</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="practice.js"></script>
+</body>
+</html>

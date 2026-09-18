@@ -1,0 +1,10 @@
+{
+  "name": "VP Lyrics Practice",
+  "short_name": "VP Practice",
+  "start_url": "./practice.html",
+  "display": "standalone",
+  "background_color": "#0c0d0f",
+  "theme_color": "#0c0d0f",
+  "orientation": "portrait",
+  "icons": []
+}
