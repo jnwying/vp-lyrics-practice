@@ -1,4 +1,4 @@
-const CACHE_NAME = "vp-lyrics-practice-homescreen-v6";
+const CACHE_NAME = "vp-lyrics-practice-homescreen-v7";
 
 const ASSETS = [
   "./index.html",

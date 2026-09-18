@@ -1031,6 +1031,67 @@ function isStandaloneApp() {
   );
 }
 
+function getInstallPlatform() {
+  const ua = navigator.userAgent || "";
+  const platform = navigator.platform || "";
+
+  const isIOS =
+    /iPad|iPhone|iPod/.test(ua) ||
+    (platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isIOS) return "ios";
+  if (/Android/i.test(ua)) return "android";
+  return "other";
+}
+
+function setInstallInstructions() {
+  const title = $("installPromptTitle");
+  const description = $("installPromptDescription");
+  const steps = $("installPromptSteps");
+
+  if (!title || !description || !steps) return;
+
+  const platform = getInstallPlatform();
+
+  if (platform === "ios") {
+    title.textContent = "ADD TO HOME SCREEN";
+    description.textContent =
+      "Add VP Lyrics Practice to your iPhone Home Screen for quick access.";
+
+    steps.innerHTML = `
+      <div><strong>1</strong><span>Tap the <b>Share ↑</b> button in Safari.</span></div>
+      <div><strong>2</strong><span>Tap <b>Add to Home Screen</b>.</span></div>
+      <div><strong>3</strong><span>Turn on <b>Open as Web App</b>.</span></div>
+      <div><strong>4</strong><span>Tap <b>Add</b>.</span></div>
+    `;
+    return;
+  }
+
+  if (platform === "android") {
+    title.textContent = "ADD TO HOME SCREEN";
+    description.textContent =
+      "Add VP Lyrics Practice to your Android Home Screen for quick access.";
+
+    steps.innerHTML = `
+      <div><strong>1</strong><span>Open this page in <b>Chrome</b>.</span></div>
+      <div><strong>2</strong><span>Tap the <b>⋮ menu</b> in the top-right corner.</span></div>
+      <div><strong>3</strong><span>Tap <b>Install app</b> or <b>Add to Home screen</b>.</span></div>
+      <div><strong>4</strong><span>Tap <b>Install</b> or <b>Add</b>.</span></div>
+    `;
+    return;
+  }
+
+  title.textContent = "ADD VP LYRICS PRACTICE";
+  description.textContent =
+    "On a phone or tablet, use your browser's menu to add VP Lyrics Practice to your Home Screen.";
+
+  steps.innerHTML = `
+    <div><strong>1</strong><span>Open the browser menu.</span></div>
+    <div><strong>2</strong><span>Choose <b>Add to Home screen</b> or <b>Install app</b>.</span></div>
+    <div><strong>3</strong><span>Follow the prompts to finish.</span></div>
+  `;
+}
+
 function closeInstallPrompt() {
   const prompt = $("installPrompt");
   if (!prompt) return;
@@ -1044,10 +1105,16 @@ function checkInstallPrompt() {
   const prompt = $("installPrompt");
   if (!prompt || isStandaloneApp()) return;
 
+  // The install instructions are intended for phones/tablets.
+  const platform = getInstallPlatform();
+  if (platform === "other") return;
+
   const dismissed =
     localStorage.getItem("vpLyricsInstallPromptDismissed");
 
   if (dismissed === "true") return;
+
+  setInstallInstructions();
 
   setTimeout(() => {
     if (isStandaloneApp()) return;
