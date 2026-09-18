@@ -14,49 +14,71 @@
  <!-- STICKY TOP AREA -->
 <div class="top-sticky">
 
-    <!-- HEADER -->
     <header class="app-header">
-        <div>
+
+        <!-- LEFT: APP TITLE -->
+        <div class="app-brand">
             <div class="app-kicker">VP</div>
             <h1>LYRICS PRACTICE</h1>
         </div>
 
-        <button
-            id="manageButton"
-            class="icon-button"
-            type="button"
-            aria-label="Song management"
-        >
-            ⚙
-        </button>
+        <!-- RIGHT: SONG DROPDOWN + SETTINGS -->
+        <div class="header-controls">
+
+            <section class="song-card">
+                <button
+                    id="songButton"
+                    class="song-button"
+                    type="button"
+                >
+                    <span id="songName">The Blood</span>
+                    <span class="dropdown-arrow">⌄</span>
+                </button>
+
+                <div id="songMenu" class="song-menu"></div>
+            </section>
+
+            <button
+                id="manageButton"
+                class="icon-button"
+                type="button"
+                aria-label="Song management"
+            >
+                ⚙
+            </button>
+
+        </div>
+
     </header>
 
-    <!-- SONG -->
-    <section class="song-card">
-        <button id="songButton" class="song-button" type="button">
-            <span id="songName">The Blood</span>
-            <span class="dropdown-arrow">⌄</span>
-        </button>
 
-        <div id="songMenu" class="song-menu"></div>
-    </section>
-
-    <!-- PREVIEW + ON/OFF -->
+    <!-- PRACTICE PREVIEW -->
     <div class="practice-sticky">
 
-        <!-- PREVIEW -->
         <section class="preview-card">
-            <div class="preview-label">PRACTICE PREVIEW</div>
 
-            <div id="lyric" class="lyric-output"></div>
+            <div class="preview-label">
+                PRACTICE PREVIEW
+            </div>
 
-            <div id="currentCode" class="current-code">
+            <div
+                id="lyric"
+                class="lyric-output"
+            ></div>
+
+            <div
+                id="currentCode"
+                class="current-code"
+            >
                 V1A
             </div>
+
         </section>
+
 
         <!-- ON / OFF -->
         <section class="output-card">
+
             <button
                 id="onButton"
                 class="output-button on active"
@@ -72,6 +94,7 @@
             >
                 ● OFF
             </button>
+
         </section>
 
     </div>
