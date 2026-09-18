@@ -64,6 +64,7 @@
 
       <button id="addSongButton" class="management-action" type="button">＋ ADD SONG</button>
       <button id="editSongButton" class="management-action" type="button">✎ EDIT SONG</button>
+      <button id="importSongButton" class="management-action" type="button">⇩ IMPORT LYRICS</button>
       <button id="deleteSongButton" class="management-action danger" type="button">♜ DELETE SONG</button>
       <button id="saveLibraryButton" class="management-action" type="button">▣ SAVE LIBRARY</button>
       <button id="resetButton" class="management-action danger" type="button">↻ RESET LIBRARY</button>
@@ -154,6 +155,24 @@ Hallelujah..."></textarea>
         <button id="cancelImport" class="secondary-button" type="button">CANCEL</button>
         <button id="confirmImport" class="primary-button" type="button">IMPORT</button>
       </div>
+    </div>
+  </div>
+
+
+  <!-- ADD TO HOME SCREEN -->
+  <div id="installPrompt" class="install-prompt" aria-hidden="true">
+    <div class="install-prompt-box" role="dialog" aria-modal="true" aria-labelledby="installPromptTitle">
+      <button id="installPromptClose" class="install-prompt-close" type="button" aria-label="Close">×</button>
+      <div class="install-prompt-icon">📱</div>
+      <h2 id="installPromptTitle">ADD TO HOME SCREEN</h2>
+      <p>Add VP Lyrics Practice to your Home Screen for quick access.</p>
+      <div class="install-steps">
+        <div><strong>1</strong><span>Tap the <b>Share</b> button ↑</span></div>
+        <div><strong>2</strong><span>Tap <b>Add to Home Screen</b></span></div>
+        <div><strong>3</strong><span>Turn on <b>Open as Web App</b></span></div>
+        <div><strong>4</strong><span>Tap <b>Add</b></span></div>
+      </div>
+      <button id="installPromptGotIt" class="install-prompt-button" type="button">GOT IT</button>
     </div>
   </div>
 
