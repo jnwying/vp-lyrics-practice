@@ -1,7 +1,7 @@
-const CACHE_NAME = "vp-lyrics-practice-3-columns-v4";
+const CACHE_NAME = "vp-lyrics-practice-sticky-v5";
 
 const ASSETS = [
-  "./practice.html",
+  "./index.html",
   "./practice.css",
   "./practice.js",
   "./manifest.json"
