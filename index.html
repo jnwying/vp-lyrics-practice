@@ -107,129 +107,172 @@
 <div id="managementModal" class="modal hidden">
     <div class="modal-dialog management-dialog">
       <div class="modal-header">
-        <!-- SONG MANAGEMENT -->
+<!-- SONG MANAGEMENT -->
 <div id="managementModal" class="modal hidden">
-    <div class="modal-dialog management-dialog">
 
-        <div class="modal-header">
-            <strong>SONG MANAGEMENT</strong>
-            <button
-                id="closeManagement"
-                class="close-button"
-                type="button"
-            >×</button>
-        </div>
+  <div class="modal-dialog management-dialog">
 
+    <!-- HEADER -->
+    <div class="modal-header">
+      <strong>SONG MANAGEMENT</strong>
 
-        <!-- CURRENT SONG -->
-        <div class="management-song">
-
-            <div class="management-label">
-                CURRENT SONG
-            </div>
-
-            <section class="song-card">
-
-                <button
-                    id="songButton"
-                    class="song-button"
-                    type="button"
-                >
-                    <span id="songName">The Blood</span>
-                    <span class="dropdown-arrow">⌄</span>
-                </button>
-
-                <div id="songMenu" class="song-menu"></div>
-
-            </section>
-
-        </div>
+      <button
+        id="closeManagement"
+        class="close-button"
+        type="button"
+      >×</button>
+    </div>
 
 
-        <!-- SONG ACTIONS -->
-        <button
-            id="addSongButton"
-            class="management-action"
-            type="button"
-        >
-            ＋ ADD SONG
-        </button>
+    <!-- CURRENT SONG -->
+    <div class="management-song">
+
+      <div class="management-label">
+        CURRENT SONG
+      </div>
+
+      <section class="song-card">
 
         <button
-            id="editSongButton"
-            class="management-action"
-            type="button"
+          id="songButton"
+          class="song-button"
+          type="button"
         >
-            ✎ EDIT SONG
+          <span id="songName">The Blood</span>
+          <span class="dropdown-arrow">⌄</span>
         </button>
 
-        <button
-            id="importSongButton"
-            class="management-action"
-            type="button"
-        >
-            ⇩ IMPORT LYRICS
-        </button>
+        <div id="songMenu" class="song-menu"></div>
 
-        <button
-            id="deleteSongButton"
-            class="management-action danger"
-            type="button"
-        >
-            ✕ DELETE SONG
-        </button>
-
-        <button
-            id="saveLibraryButton"
-            class="management-action"
-            type="button"
-        >
-            ▣ SAVE LIBRARY
-        </button>
-
-        <button
-            id="resetButton"
-            class="management-action danger"
-            type="button"
-        >
-            ↻ RESET LIBRARY
-        </button>
+      </section>
 
     </div>
-</div>
-        <strong>SONG MANAGEMENT</strong>
-        <button id="closeManagement" class="close-button" type="button">×</button>
-      </div>
 
-      <button id="addSongButton" class="management-action" type="button">＋ ADD SONG</button>
-      <button id="editSongButton" class="management-action" type="button">✎ EDIT SONG</button>
-      <button id="importSongButton" class="management-action" type="button">⇩ IMPORT LYRICS</button>
-      <button id="deleteSongButton" class="management-action danger" type="button">♜ DELETE SONG</button>
-      <button id="saveLibraryButton" class="management-action" type="button">▣ SAVE LIBRARY</button>
-      <button id="resetButton" class="management-action danger" type="button">↻ RESET LIBRARY</button>
 
-      <div class="divider"></div>
+    <!-- SONG ACTIONS -->
 
-      <div class="management-heading">TRANSITION SETTINGS</div>
+    <button
+      id="addSongButton"
+      class="management-action"
+      type="button"
+    >
+      ＋ ADD SONG
+    </button>
 
-      <label class="setting-label" for="timingRange">Transition Timing</label>
-      <div class="timing-row">
-        <input id="timingRange" type="range" min="0" max="500" step="10" value="300">
-        <span id="timingValue">0.30 sec</span>
-      </div>
-      <div class="range-labels">
-        <span>0.00</span>
-        <span>0.50 sec</span>
-      </div>
+    <button
+      id="editSongButton"
+      class="management-action"
+      type="button"
+    >
+      ✎ EDIT SONG
+    </button>
 
-      <div class="manual-row">
-        <label for="timingManual">Manual Timing</label>
-        <input id="timingManual" type="number" min="0" max="5" step="0.01" value="0.30">
-        <span>sec</span>
-      </div>
-      <button id="closeManagementBottom" class="close-management-button" type="button">CLOSE</button>
+    <button
+      id="importSongButton"
+      class="management-action"
+      type="button"
+    >
+      ⇩ IMPORT LYRICS
+    </button>
+
+    <button
+      id="deleteSongButton"
+      class="management-action danger"
+      type="button"
+    >
+      ♜ DELETE SONG
+    </button>
+
+    <button
+      id="saveLibraryButton"
+      class="management-action"
+      type="button"
+    >
+      ▣ SAVE LIBRARY
+    </button>
+
+    <button
+      id="resetButton"
+      class="management-action danger"
+      type="button"
+    >
+      ↻ RESET LIBRARY
+    </button>
+
+
+    <!-- TRANSITION SETTINGS -->
+
+    <div class="divider"></div>
+
+    <div class="management-heading">
+      TRANSITION SETTINGS
     </div>
+
+    <label
+      class="setting-label"
+      for="timingRange"
+    >
+      Transition Timing
+    </label>
+
+    <div class="timing-row">
+
+      <input
+        id="timingRange"
+        type="range"
+        min="0"
+        max="500"
+        step="10"
+        value="300"
+      >
+
+      <span id="timingValue">
+        0.30 sec
+      </span>
+
+    </div>
+
+    <div class="range-labels">
+      <span>0.00</span>
+      <span>0.50 sec</span>
+    </div>
+
+
+    <!-- MANUAL TIMING -->
+
+    <div class="manual-row">
+
+      <label for="timingManual">
+        Manual Timing
+      </label>
+
+      <input
+        id="timingManual"
+        type="number"
+        min="0"
+        max="5"
+        step="0.01"
+        value="0.30"
+      >
+
+      <span>sec</span>
+
+    </div>
+
+
+    <!-- CLOSE -->
+
+    <button
+      id="closeManagementBottom"
+      class="close-management-button"
+      type="button"
+    >
+      CLOSE
+    </button>
+
   </div>
+
+</div>
 
   <!-- ADD SONG -->
   <div id="addSongModal" class="modal hidden">
