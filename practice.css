@@ -899,3 +899,341 @@ body > .modal .modal-dialog {
     }
 
 }
+
+/* =========================================================
+   NEW MOBILE HEADER LAYOUT
+   ========================================================= */
+
+.top-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* HEADER
+   ----------------------------------------- */
+
+.top-sticky .app-header {
+    position: relative;
+    z-index: 1001;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 18px 24px 16px;
+}
+
+
+/* LEFT SIDE: VP + LYRICS PRACTICE */
+
+.app-brand {
+    min-width: 0;
+    flex: 1;
+}
+
+.app-brand .app-kicker {
+    margin-bottom: 3px;
+}
+
+.app-brand h1 {
+    margin: 0;
+
+    font-size: 24px;
+    line-height: 1.05;
+    letter-spacing: .02em;
+
+    white-space: nowrap;
+}
+
+
+/* RIGHT SIDE */
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* SONG DROPDOWN
+   ----------------------------------------- */
+
+.top-sticky .song-card {
+    position: relative;
+    z-index: 1002;
+
+    margin: 0;
+    width: 280px;
+}
+
+.top-sticky .song-button {
+    width: 100%;
+
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    border-radius: 14px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    background: var(--panel2);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    cursor: pointer;
+}
+
+.top-sticky .song-button:active {
+    transform: scale(.99);
+}
+
+.top-sticky .dropdown-arrow {
+    font-size: 22px;
+    color: var(--muted);
+    margin-left: 10px;
+}
+
+
+/* SONG MENU */
+
+.top-sticky .song-menu {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: calc(100% + 6px);
+
+    z-index: 1100 !important;
+
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+
+/* SETTINGS */
+
+.top-sticky .icon-button {
+    width: 54px;
+    height: 54px;
+
+    flex-shrink: 0;
+
+    font-size: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   PREVIEW + ON/OFF
+   ========================================================= */
+
+.top-sticky .practice-sticky {
+    position: relative;
+    top: auto;
+
+    z-index: 1003;
+
+    margin: 0;
+
+    padding: 8px 12px 12px;
+
+    background: var(--bg);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+    box-shadow: 0 10px 24px rgba(0,0,0,.28);
+}
+
+
+/* MAKE PREVIEW SMALLER */
+
+.top-sticky .preview-card {
+    min-height: 260px;
+    height: 260px;
+
+    margin-bottom: 10px;
+}
+
+
+/* LYRIC TEXT */
+
+.top-sticky .lyric-output {
+    font-size: clamp(25px, 6vw, 38px);
+
+    padding: 20px 28px;
+
+    line-height: 1.2;
+}
+
+
+/* ON/OFF */
+
+.top-sticky .output-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin: 0;
+}
+
+.top-sticky .output-button {
+    min-height: 58px;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   SLIDES
+   ========================================================= */
+
+.app {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Keep 3 columns */
+
+.slide-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+
+/* Small phones */
+
+@media (max-width: 600px) {
+
+    .top-sticky .app-header {
+        padding: 16px 18px 14px;
+        gap: 8px;
+    }
+
+    .app-brand h1 {
+        font-size: 21px;
+    }
+
+    .app-brand .app-kicker {
+        font-size: 12px;
+    }
+
+    .header-controls {
+        gap: 5px;
+    }
+
+    .top-sticky .song-card {
+        width: 180px;
+    }
+
+    .top-sticky .song-button {
+        min-height: 52px;
+
+        padding: 0 14px;
+
+        font-size: 17px;
+    }
+
+    .top-sticky .icon-button {
+        width: 42px;
+        height: 48px;
+
+        font-size: 25px;
+    }
+
+    .top-sticky .preview-card {
+        min-height: 245px;
+        height: 245px;
+    }
+
+    .top-sticky .lyric-output {
+        font-size: clamp(23px, 6vw, 34px);
+        padding: 16px 20px;
+    }
+
+    .top-sticky .output-button {
+        min-height: 54px;
+        font-size: 19px;
+    }
+}
+
+
+/* Very small phones */
+
+@media (max-width: 390px) {
+
+    .top-sticky .app-header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .app-brand h1 {
+        font-size: 18px;
+    }
+
+    .top-sticky .song-card {
+        width: 145px;
+    }
+
+    .top-sticky .song-button {
+        min-height: 48px;
+
+        padding: 0 12px;
+
+        font-size: 15px;
+    }
+
+    .top-sticky .icon-button {
+        width: 36px;
+        font-size: 22px;
+    }
+
+    .top-sticky .preview-card {
+        min-height: 225px;
+        height: 225px;
+    }
+
+    .top-sticky .lyric-output {
+        font-size: 22px;
+    }
+
+}
+
+
+/* 2 columns only on very narrow screens */
+
+@media (max-width: 360px) {
+
+    .slide-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
