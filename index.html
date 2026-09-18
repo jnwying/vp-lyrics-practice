@@ -25,18 +25,7 @@
         <!-- RIGHT: SONG DROPDOWN + SETTINGS -->
         <div class="header-controls">
 
-            <section class="song-card">
-                <button
-                    id="songButton"
-                    class="song-button"
-                    type="button"
-                >
-                    <span id="songName">The Blood</span>
-                    <span class="dropdown-arrow">⌄</span>
-                </button>
-
-                <div id="songMenu" class="song-menu"></div>
-            </section>
+        
 
             <button
                 id="manageButton"
@@ -118,6 +107,96 @@
 <div id="managementModal" class="modal hidden">
     <div class="modal-dialog management-dialog">
       <div class="modal-header">
+        <!-- SONG MANAGEMENT -->
+<div id="managementModal" class="modal hidden">
+    <div class="modal-dialog management-dialog">
+
+        <div class="modal-header">
+            <strong>SONG MANAGEMENT</strong>
+            <button
+                id="closeManagement"
+                class="close-button"
+                type="button"
+            >×</button>
+        </div>
+
+
+        <!-- CURRENT SONG -->
+        <div class="management-song">
+
+            <div class="management-label">
+                CURRENT SONG
+            </div>
+
+            <section class="song-card">
+
+                <button
+                    id="songButton"
+                    class="song-button"
+                    type="button"
+                >
+                    <span id="songName">The Blood</span>
+                    <span class="dropdown-arrow">⌄</span>
+                </button>
+
+                <div id="songMenu" class="song-menu"></div>
+
+            </section>
+
+        </div>
+
+
+        <!-- SONG ACTIONS -->
+        <button
+            id="addSongButton"
+            class="management-action"
+            type="button"
+        >
+            ＋ ADD SONG
+        </button>
+
+        <button
+            id="editSongButton"
+            class="management-action"
+            type="button"
+        >
+            ✎ EDIT SONG
+        </button>
+
+        <button
+            id="importSongButton"
+            class="management-action"
+            type="button"
+        >
+            ⇩ IMPORT LYRICS
+        </button>
+
+        <button
+            id="deleteSongButton"
+            class="management-action danger"
+            type="button"
+        >
+            ✕ DELETE SONG
+        </button>
+
+        <button
+            id="saveLibraryButton"
+            class="management-action"
+            type="button"
+        >
+            ▣ SAVE LIBRARY
+        </button>
+
+        <button
+            id="resetButton"
+            class="management-action danger"
+            type="button"
+        >
+            ↻ RESET LIBRARY
+        </button>
+
+    </div>
+</div>
         <strong>SONG MANAGEMENT</strong>
         <button id="closeManagement" class="close-button" type="button">×</button>
       </div>
